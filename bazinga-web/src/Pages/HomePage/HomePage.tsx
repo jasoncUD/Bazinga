@@ -18,15 +18,12 @@ const HomePage: FC<HomePageProps> = () => {
 
   return (
     <div>
-      
+      <header className="header">
+        <h1 className="header-title">Bazinga</h1>
+      </header>
       {!isLearnPage && <><div className={`header ${backgroundClass}`}>
       </div><div className="button-container1">
-          <button
-            className="button"
-            onClick={() => { } }>
-            Test
-          </button>
-          <button onClick={showLearnPage}>Learn</button>
+          <button onClick={showLearnPage}>Get Started</button>
         </div></>}
         {isLearnPage && <LearnPage />}
       
