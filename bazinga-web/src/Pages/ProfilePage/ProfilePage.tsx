@@ -7,9 +7,6 @@ const ProfilePage: FC<ProfilePageProps> = () => {
 
   return (
     <div>
-        <div className="header">
-            <h1>Profile Page</h1>
-        </div>
     </div>
   );
 };

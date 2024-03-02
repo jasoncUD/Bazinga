@@ -13,7 +13,12 @@ const HomePage: FC<HomePageProps> = () => {
   return (
     <div>
       <div className={`header ${backgroundClass}`}>
-        <h1>Home Page</h1>
+      </div>
+      <div className="button-container1">
+      <button
+              className="button"
+              onClick={() => {}}>
+          </button>
       </div>
     </div>
   );
