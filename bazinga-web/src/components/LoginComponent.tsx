@@ -1,19 +1,26 @@
 import React, { useState } from 'react';
 import './LoginComponent.css';
 
-const LoginComponent: React.FC = () => {
+interface LoginComponentProps {
+    onLoginSuccess: () => void;
+}
+
+const LoginComponent: React.FC<LoginComponentProps> = ({ onLoginSuccess }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleLogin = (event: React.FormEvent) => {
         event.preventDefault();
-        // Handle login logic here
-        console.log({ username, password });
+        // Here, implement your actual login logic
+
+        // On successful login:
+        localStorage.setItem('isLoggedIn', 'true');
+        onLoginSuccess();
     };
 
     return (
         <div className="login-container">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleLogin}>
                 <h2>Login</h2>
                 <div>
                     <label>Username:</label>

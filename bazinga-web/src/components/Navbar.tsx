@@ -7,6 +7,14 @@ interface NavbarProps {
 }
 
 const Navbar: FC<NavbarProps> = () => {
+
+  const isAuthenticated = localStorage.getItem('isLoggedIn') === 'true';
+
+    const handleLogout = () => {
+        localStorage.removeItem('isLoggedIn');
+        window.location.href = '/login';
+    };
+
    return (
     <nav className="navbar">
       <div className="nav-links">
@@ -20,6 +28,13 @@ const Navbar: FC<NavbarProps> = () => {
         <Link to={"/profile"}>
             <h2>Profile</h2>
         </Link>
+        {isAuthenticated ? (
+            <button onClick={handleLogout}>Logout</button>
+        ) : (
+            <Link to={"/login"}>
+                <h2>Login</h2>
+            </Link>
+        )}
       </div>
       
     </nav>
