@@ -16,9 +16,11 @@ function App() {
   }
   return (
     <div className="App">
+       <div className="navbar">
       <button onClick={showHome}>Home</button>
       <button onClick={showProfile}>Profile</button>
       <button>Login</button>
+    </div>
       {isProfile && <ProfilePage />}
       {isHomePage && <HomePage />}
     </div>
