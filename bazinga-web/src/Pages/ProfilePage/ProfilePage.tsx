@@ -18,6 +18,7 @@ const ProfilePage: FC<ProfilePageProps> = () => {
     email: "johnDoe@gmail.com",
     grade: "10",
     completedCourses: ["Math", "Science", "English"],
+    incompleteCourses: ["History", "Art"],
   });
   const { name, username, password, email, grade, completedCourses } = student;
 

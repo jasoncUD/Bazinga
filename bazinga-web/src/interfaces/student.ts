@@ -5,4 +5,5 @@ export interface Student {
     email: string;
     grade: string;
     completedCourses: string[];
+    incompleteCourses: string[];
   };

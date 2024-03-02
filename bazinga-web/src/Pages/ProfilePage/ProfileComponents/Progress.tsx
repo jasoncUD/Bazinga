@@ -3,16 +3,21 @@ import "./Progress.css";
 import { Student } from "../../../interfaces/student";
 
 interface ProgressProps {
-    student: Student;
+  student: Student;
 }
 
 function Progress(props: ProgressProps) {
-
   return (
     <div>
-        <div className="header">
-            <h1>Progress</h1>
-            <div className="student-info">
+      <div className="header">
+        <h1>Progress</h1>
+        <div className="student-info">
+          <p>Topics To Improve</p>
+          <ul>
+            {props.student.incompleteCourses.map((course, index) => (
+              <li key={index}>{course}</li>
+            ))}
+          </ul>
           <p>Completed Courses:</p>
           <ul>
             {props.student.completedCourses.map((course, index) => (
@@ -20,9 +25,9 @@ function Progress(props: ProgressProps) {
             ))}
           </ul>
         </div>
-        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default Progress;
