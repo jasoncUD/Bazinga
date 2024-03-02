@@ -14,14 +14,8 @@ const Navbar: FC<NavbarProps> = () => {
         <Link to={'/'}>
             <h2>Home</h2> 
         </Link>
-        <Link to={"/math"}>
-            <h2>Math</h2>
-        </Link>
-        <Link to={"/science"}>
-            <h2>Science</h2>
-        </Link>
-        <Link to={"/english"}>
-            <h2>English</h2>
+        <Link to={"/learn"}>
+            <h2>Learn</h2>
         </Link>
         <Link to={"/profile"}>
             <h2>Profile</h2>
