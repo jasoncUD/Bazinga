@@ -1,13 +1,21 @@
-import './App.css';
-import { Outlet } from 'react-router';
-import Navbar from './components/Navbar';
-import AuthSwitchComponent from './components/AuthSwitchComponent';
+import "./App.css";
+import HomePage from "./Pages/HomePage/HomePage";
+import React, { FC, useState } from "react";
+import ProfilePage from "./Pages/ProfilePage/ProfilePage";
 
 function App() {
+  const [isHomePage, setIsHomePage] = useState(true);
+  const [isProfile, setIsProfile] = useState(false);
+  const showProfile = () => {
+    setIsProfile(!isProfile);
+    setIsHomePage(false);
+  };
   return (
     <div className="App">
-          <Navbar/>
-          <Outlet />
+      <button>Login</button>
+      <button onClick={showProfile}>Profile</button>
+      {isProfile && <ProfilePage />}
+      {/* {isHomePage && <HomePage />} */}
     </div>
   );
 }
