@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(206, 165, 206);
+  }
+  .instructor-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* This centers the content vertically */
+  }
+  
+  .instructor {
+    font-size: 6em; /* Adjust as needed */
+  }
+
+  .button-container {
+    margin-top: 20px; /* Adjust as needed */
+  }
+  
+  .button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
