@@ -12,6 +12,7 @@ export const router = createBrowserRouter([
             {path: "", element: <HomePage />},
             {path: "learn", element: <LearnPage />},
             {path: "profile", element: <ProfilePage />},
+            {path: "playing", element: <ProfilePage />},
             {path: "*", element: <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <h1>404 Error: Page Not Found</h1>
             </div>}
