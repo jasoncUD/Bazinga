@@ -1,0 +1,91 @@
+.profile-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+  }
+  
+  .student-info {
+    margin-top: 20px;
+  }
+  
+  .student-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .student-info p {
+    margin-bottom: 5px;
+  }
+  
+  .student-info ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .student-info li {
+    margin-bottom: 5px;
+  }
+  /* ProfilePage.css */
+
+.profile-container {
+    display: flex;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+  }
+  
+  .sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .menu-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .menu-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .menu-item:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .student-info {
+    margin-left: 20px;
+  }
+  
+  .student-info h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .student-info p {
+    margin-bottom: 5px;
+  }
+  
+  .student-info ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .student-info li {
+    margin-bottom: 5px;
+  }
+  
