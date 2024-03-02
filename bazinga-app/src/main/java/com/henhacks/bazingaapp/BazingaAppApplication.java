@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BazingaAppApplication {
 
 	public static void main(String[] args) {
+		EnvLoader.loadDotenv();
 		SpringApplication.run(BazingaAppApplication.class, args);
 	}
-
 }

@@ -9,7 +9,7 @@ public class EnvLoader {
 
     public static void loadDotenv() {
         try {
-            List<String> lines = Files.readAllLines(Paths.get("workout-app-project\\.env"));
+            List<String> lines = Files.readAllLines(Paths.get("bazinga-app\\.env"));
             for (String line : lines) {
                 String[] parts = line.split("=", 2);
                 if (parts.length == 2) {
