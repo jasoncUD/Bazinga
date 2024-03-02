@@ -11,7 +11,7 @@ function App() {
     setIsHomePage(false);
   };
   const showHome = () => {
-    setIsHomePage(!isHomePage);
+    setIsHomePage(true);
     setIsProfile(false);
   }
   return (
