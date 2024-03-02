@@ -18,6 +18,7 @@ const HomePage: FC<HomePageProps> = () => {
       <button
               className="button"
               onClick={() => {}}>
+                Test
           </button>
       </div>
     </div>
