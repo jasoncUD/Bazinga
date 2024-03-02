@@ -1,9 +1,5 @@
 body {
-    background-image: url('TRYBAZINGA.COM-2.jpg'); /* Replace 'background-image.jpg' with the path to your image */
-    background-size: cover; /* Cover the entire background */
-    background-position: center top px; /* Center the background */
-    background-repeat: no-repeat; /* Prevent background image from repeating */
-    /* Optionally, you can add other background properties such as background-color */
+  background-color: #FF914D;
 }
 
 .button-container1 {

@@ -10,12 +10,17 @@ function App() {
     setIsProfile(!isProfile);
     setIsHomePage(false);
   };
+  const showHome = () => {
+    setIsHomePage(!isHomePage);
+    setIsProfile(false);
+  }
   return (
     <div className="App">
       <button>Login</button>
       <button onClick={showProfile}>Profile</button>
+      <button onClick={showHome}>Home</button>
       {isProfile && <ProfilePage />}
-      {/* {isHomePage && <HomePage />} */}
+      {isHomePage && <HomePage />}
     </div>
   );
 }
