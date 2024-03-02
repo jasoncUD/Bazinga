@@ -1,5 +1,5 @@
 body {
-    background-image: url('TRYBAZINGA.COM.jpg'); /* Replace 'background-image.jpg' with the path to your image */
+    background-image: url('TRYBAZINGA.COM-2.jpg'); /* Replace 'background-image.jpg' with the path to your image */
     background-size: cover; /* Cover the entire background */
     background-position: center top px; /* Center the background */
     background-repeat: no-repeat; /* Prevent background image from repeating */
@@ -10,9 +10,9 @@ body {
     margin-top: 100px; /* Adjust as needed */
   }
 
+
+
   .button1 {
     width: 100px; /* Adjust width as needed */
   height: 100px;
-    background-image: url('Mask\ group.jpg'); /* Replace 'background-image.jpg' with the path to your image */
-    background-size: cover;
   }
