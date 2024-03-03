@@ -12,10 +12,13 @@ const LessonCategories: React.FC<LessonCategoriesProps> = (props) => {
   const [isShowCategory, setIsShowCategory] = useState(true);
   // Create state to manage category data
   const [categories, setCategories] = useState<Category[]>(props.categoryList);
+  const [categoryLesson, setCategoryLesson] = useState<string>("math");
+
 
   // Callback function to update category correct count
 
   const handleCategoryClick = (category: Category) => {
+    setCategoryLesson(category.name);
     setIsLesson(true);
     setIsShowCategory(false);
   };
@@ -34,7 +37,7 @@ const LessonCategories: React.FC<LessonCategoriesProps> = (props) => {
                 className="category-item"
                 onClick={() => handleCategoryClick(category)}
               >
-                {category.name} 
+                {category.name}
               </button>
             ))}
           </div>
@@ -47,6 +50,7 @@ const LessonCategories: React.FC<LessonCategoriesProps> = (props) => {
 
       {isLesson && (
         <Lesson
+          categoryLesson={categoryLesson}
           setIsShowCategory={setIsShowCategory}
           setIsPlaying={setIsLesson}
         />
