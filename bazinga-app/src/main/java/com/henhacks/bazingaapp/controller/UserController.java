@@ -25,12 +25,7 @@ public class UserController {
     @PostMapping("/incompleteCourses")
     public ResponseEntity<User> updateIncompleteCourses(@RequestBody UpdateIncompleteCoursesRequest request) {
         Optional<User> updatedUser = userService.updateIncompleteCourses(request.getId(), request.getTopics());
-
-        if(updatedUser.isPresent()) {
-            return ResponseEntity.ok(updatedUser.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(updatedUser.get());
     }
 
 }

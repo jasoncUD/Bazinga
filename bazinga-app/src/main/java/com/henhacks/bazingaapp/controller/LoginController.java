@@ -30,18 +30,6 @@ public class LoginController {
                 .map(userFound -> new ResponseEntity<>(userFound, HttpStatus.OK))
                 .orElse(new ResponseEntity<>(HttpStatus.UNAUTHORIZED));
     }
-
-    @PostMapping("/incompleteCourses")
-    public ResponseEntity<User> updateIncompleteCourses(@RequestBody UpdateIncompleteCoursesRequest request) {
-        Optional<User> updatedUser = userService.updateIncompleteCourses(request.getId(), request.getTopics());
-
-        if(updatedUser.isPresent()) {
-            return ResponseEntity.ok(updatedUser.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    
+   
 
 }

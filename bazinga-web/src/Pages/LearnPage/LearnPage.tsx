@@ -26,7 +26,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   });
 
   //make a categoryList array that takes in the category.ts interface
-  const [categoryList, setCategoryList] = useState<Category[]>([
+  const [categoryList, setCategoryList] = useState<any[]>([
     {
       name: "Shapes",
       correct: 0,
@@ -185,7 +185,6 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
         setIsLessonCategories(true);
       }
       if (task === "Practice") {
-        const id = student.id;
         const requestBody = {
           subject: subject,
           age: student.age,
@@ -200,8 +199,8 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            
             saveCategories(data.choices[0].message.content);
+            setIsCategories(true);
             console.log("You have saved your categories!");
           })
           .catch((error) => {
@@ -210,7 +209,6 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
               "An error occurred during Category Generation. Please retry in one minute."
             );
           });
-        setIsCategories(true);
       }
     }
     setIsBazinga(false);
@@ -223,11 +221,12 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
     console.log(data);
 
     const requestBody = {
-      topics: data.syllabus.topics,
       id: id,
+      topics: data.topics
     };
-    console.log(student.id);
-    console.log(data.topics)
+    if (data.topics){
+      setCategoryList(data.topics);
+    }
     fetch("http://localhost:8080/user/incompleteCourses", {
       method: "POST",
       headers: {
@@ -238,18 +237,10 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
       .then((res) => res.json())
       .then((responseData) => {
         console.log(responseData);
-        if (responseData) {
-          setStudent(JSON.parse(responseData));
-          setCategoryList(student.incompleteCourses);
-        } else {
-          alert(responseData.message || "Input data is wrong");
-        }
+        setStudent(JSON.parse(responseData));
+        setCategoryList(responseData.incompleteCourses);
       })
       .catch((error) => {
-        console.error("Generation error:", error);
-        alert(
-          "An error occurred during Category Generation. Please retry in one minute."
-        );
       });
   }
 

@@ -1,36 +1,34 @@
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import "./Categories.css";
 import Playing from "../Playing/Playing";
-import { Category } from "../../../interfaces/category";
-import { Question } from "../../../interfaces/question";
+// Update the imports to reflect the new interfaces
+import { CategoryTemp } from "../../../interfaces/categoryTemp";
+import { QuestionTemp } from "../../../interfaces/questionTemp";
 
 interface CategoriesProps {
-  categoryList: Category[];
+  categoryList: any[];
 }
 
 const Categories: React.FC<CategoriesProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(true);
-  const [questionList, setQuestionList] = useState<Question[] | null>(null);
+  const [questionList, setQuestionList] = useState<QuestionTemp[] | null>(null);
 
-  // Create state to manage category data
-  const [categories, setCategories] = useState<Category[]>(props.categoryList);
+  // Update the state to use CategoryTemp
+  const [categories, setCategories] = useState<CategoryTemp[]>(props.categoryList);
 
-  // Callback function to update category correct count
+  // Update any usage of Category to CategoryTemp and Question to QuestionTemp
   const updateCategoryCorrect = () => {
     const updatedCategories = categories.map((category) => {
-      if (category.questions === questionList) {
-        return {
-          ...category,
-          correct: category.correct + 1, // Increase correct count by 1
-        };
-      }
-      return category;
+      // Assuming you have a logic to check if the questions match
+      // and a 'correct' property to update in CategoryTemp
+      return category; // Update this logic based on your actual data structure
     });
     setCategories(updatedCategories);
   };
 
-  const handleCategoryClick = (category: Category) => {
+  const handleCategoryClick = (category: CategoryTemp) => {
+    // Assuming your CategoryTemp has a 'questions' property of type QuestionTemp[]
     setQuestionList(category.questions);
     setIsPlaying(true);
     setIsShowCategory(false);
@@ -44,13 +42,13 @@ const Categories: React.FC<CategoriesProps> = (props) => {
             <h1>Let's Learn!</h1>
           </div>
           <div className="category-list">
-            {categories.map((category: Category) => (
+            {categories.map((category: CategoryTemp, index: number) => (
               <button
-                key={category.name}
+                key={index} // Assuming 'name' is not a property of CategoryTemp, use index or another unique identifier
                 className="category-item"
                 onClick={() => handleCategoryClick(category)}
               >
-                {category.name} {category.correct}/{category.questions.length}
+                {category.topic} {/* Assuming 'name' changed to 'topic' in CategoryTemp */}
               </button>
             ))}
           </div>
@@ -66,7 +64,7 @@ const Categories: React.FC<CategoriesProps> = (props) => {
           questionList={questionList}
           setIsShowCategory={setIsShowCategory}
           setIsPlaying={setIsPlaying}
-          updateCategoryCorrect={updateCategoryCorrect} // Pass the callback function
+          updateCategoryCorrect={updateCategoryCorrect} // Ensure Playing component is compatible with QuestionTemp[]
         />
       )}
     </div>

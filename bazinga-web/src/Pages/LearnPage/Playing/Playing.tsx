@@ -1,16 +1,21 @@
 import React, { FC, useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import "./Playing.css";
-import { Question } from "../../../interfaces/question";
+import { QuestionTemp } from "../../../interfaces/questionTemp"; // Ensure this path is correct
 
 interface PlayingProps {
-  questionList: Question[];
+  questionList: QuestionTemp[];
   setIsShowCategory: (isShowCategory: boolean) => void;
   setIsPlaying: (isPlaying: boolean) => void;
   updateCategoryCorrect: () => void; // Callback function to update category correct count
 }
 
-const Playing: FC<PlayingProps> = (props) => {
+const Playing: FC<PlayingProps> = ({
+  questionList,
+  setIsShowCategory,
+  setIsPlaying,
+  updateCategoryCorrect,
+}) => {
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [options, setOptions] = useState<string[]>([]);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
@@ -19,16 +24,11 @@ const Playing: FC<PlayingProps> = (props) => {
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
-    const currentQuestion = props.questionList[questionIndex];
-    const optionsArray = [
-      currentQuestion.option1,
-      currentQuestion.option2,
-      currentQuestion.option3,
-      currentQuestion.answer,
-    ];
-    const shuffledOptions = shuffleArray(optionsArray);
+    const currentQuestion = questionList[questionIndex];
+    // Assuming your QuestionTemp's options field is an array of strings
+    const shuffledOptions = shuffleArray(currentQuestion.options);
     setOptions(shuffledOptions);
-  }, [props.questionList, questionIndex]);
+  }, [questionList, questionIndex]);
 
   function shuffleArray(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -43,14 +43,14 @@ const Playing: FC<PlayingProps> = (props) => {
   };
 
   const handleOptionClick = (option: string) => {
-    const currentQuestion = props.questionList[questionIndex];
-    if (option === currentQuestion.answer) {
+    const currentQuestion = questionList[questionIndex];
+    if (option === currentQuestion.answer) { // Assuming 'answer' is the index of the correct option
       // Correct answer
       setShowConfetti(true);
       setIsCorrect(true);
       setIsWrong(false);
       setTimeout(() => setShowConfetti(false), 3000);
-      props.updateCategoryCorrect(); // Update category correct count
+      updateCategoryCorrect(); // Update category correct count
     } else {
       // Incorrect answer
       setShowConfetti(false);
@@ -60,9 +60,9 @@ const Playing: FC<PlayingProps> = (props) => {
   };
 
   const handleNextQuestion = () => {
-    if (questionIndex === props.questionList.length - 1) {
-      props.setIsPlaying(false);
-      props.setIsShowCategory(true);
+    if (questionIndex === questionList.length - 1) {
+      setIsPlaying(false);
+      setIsShowCategory(true);
       setShowResults(true);
     } else {
       setQuestionIndex(questionIndex + 1);
@@ -75,7 +75,7 @@ const Playing: FC<PlayingProps> = (props) => {
     <div className="container">
       {showConfetti && <Confetti />}
       <h1 className="header11">Question #{questionIndex + 1}:</h1>
-      <h2 className="header2">{props.questionList[questionIndex].question}</h2>
+      <h2 className="header2">{questionList[questionIndex].question}</h2>
       {options.map((option, index) => (
         <button
           key={index}
@@ -85,7 +85,7 @@ const Playing: FC<PlayingProps> = (props) => {
           {option}
         </button>
       ))}
-      <button onClick={() => speak(props.questionList[questionIndex].question)} className="readbutton">
+      <button onClick={() => speak(questionList[questionIndex].question)} className="readbutton">
         Read Question
       </button>
       {isWrong && !showResults && (
