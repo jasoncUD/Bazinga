@@ -32,7 +32,7 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
 
   return (
     <>
-      {!isCategories && (
+      {!isPlaying && (
         <>
           <div className="button-container1">
             <button
@@ -101,8 +101,8 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
           </div>
         </>
       )}
-      {isCategories && task !== null && subject !== null && (
-        <Categories task={task} subject={subject} onCategorySelect={selectCategory} />
+      {isPlaying && task !== null && subject !== null && (
+        <Playing task={task} subject={subject} />
       )}
     </>
   );
