@@ -39,16 +39,18 @@ function App() {
   }
   return (
     <div className="App">
-       <div className="navbar">
-      <button onClick={showHome}>Home</button>
-      <button onClick={showProfile}>Profile</button>
-      <button onClick={showLogin}>Login</button>
+        <div className="background1">
+            <div className="navbar">
+                <button onClick={showHome}>Home</button>
+                <button onClick={showProfile}>Profile</button>
+                <button onClick={showLogin}>Login</button>
+            </div>
+            {isProfile && <ProfilePage />}
+            {isHomePage && <HomePage />}
+            {isLogin && <LoginPage />}
+        </div>
     </div>
-      {isProfile && <ProfilePage />}
-      {isHomePage && <HomePage />}
-      {isLogin && <LoginPage />}
-    </div>
-  );
+);
 }
 
 export default App;

@@ -17,16 +17,15 @@ const HomePage: FC<HomePageProps> = () => {
   const backgroundClass = showLogin ? 'blur-background' : '';
 
   return (
-    <div>
-      <header className="header">
-        <h1 className="header-title">Bazinga</h1>
+    <div className="homebody">
+      <header className="header1">
+        <h1 className="header-title1">Bazinga</h1>
       </header>
       {!isLearnPage && <><div className={`header ${backgroundClass}`}>
       </div><div className="button-container1">
-          <button onClick={showLearnPage}>Get Started</button>
-        </div></>}
+    <button className="button1" onClick={showLearnPage}>Get Started</button>
+</div></>}
         {isLearnPage && <LearnPage />}
-      
     </div>
   );
 };
