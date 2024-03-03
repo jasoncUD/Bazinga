@@ -39,7 +39,6 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ handleLogin }) => {
     return (
         <div className="loginContainer">
             <form onSubmit={handleSubmit}>
-                <h2 className="loginHeading">Login</h2>
                 <div className="loginField">
                     <label className="loginLabel">Username:</label>
                     <input className="loginInput" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />

@@ -13,6 +13,7 @@
 /* Form heading */
 .registerHeading {
   color: #333;
+  font-family: "Bungee", sans-serif;
 }
 
 /* Form field wrapper */
@@ -25,7 +26,8 @@
 .registerLabel {
   display: block;
   margin-bottom: 5px;
-  color: #666;
+  color: white;
+  font-family: "Bungee", sans-serif;
 }
 
 /* Input fields */
@@ -48,6 +50,7 @@
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
+  font-family: "Bungee", sans-serif;
 }
 
 .registerButton:hover {
