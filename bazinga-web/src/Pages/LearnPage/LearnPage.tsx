@@ -11,6 +11,16 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
   const [isCategories, setIsCategories] = useState(false);
+  const [student, setStudent] = useState({
+    name: "",
+    username: "",
+    password: "",
+    email: "",
+    age: 0,
+    gradeLevel: "",
+    completedCourses: [""],
+    incompleteCourses: [""],
+  });
 
   const changeTask = (task: string) => {
     setTask(task);
@@ -21,6 +31,37 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   };
   const goToCategory = () => {
     if (task && subject) {
+      const storedUserData = localStorage.getItem('user');
+      if (storedUserData) {
+        const userData = JSON.parse(storedUserData);
+        setStudent(userData);
+      }
+      if (task === "Practice") {
+        const requestBody = {
+          subject: subject,
+          age: student.age,
+          gradeLevel: student.gradeLevel
+        };
+        fetch("http://localhost:8080/api/chatgpt/ask", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(requestBody),
+        }).then((res) => res.json())
+        .then((data) => {
+          console.log(data.choices[0].message.content);
+        if (data.userId) {
+            alert("You have successfully logged in!");
+        } else {
+            alert(data.message || "Input data is wrong");
+        }
+        })
+        .catch((error) => {
+        console.error("Generation error:", error);
+        alert("An error occurred during Category Generation. Please retry in one minute.");
+        })
+      }
       setIsCategories(true);
     }
     setIsBazinga(false);
