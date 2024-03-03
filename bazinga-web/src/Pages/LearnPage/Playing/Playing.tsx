@@ -21,13 +21,14 @@ const Playing: FC<PlayingProps> = ({
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
   const [isWrong, setIsWrong] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [correctAnswer, setCorrectAnswer] = useState<string>(''); // Store the correct answer
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
     const currentQuestion = questionList[questionIndex];
-    // Assuming your QuestionTemp's options field is an array of strings
     const shuffledOptions = shuffleArray(currentQuestion.options);
     setOptions(shuffledOptions);
+    setCorrectAnswer(currentQuestion.answer); // Set the correct answer from the current question
   }, [questionList, questionIndex]);
 
   function shuffleArray(array: string[]) {
@@ -53,15 +54,13 @@ const Playing: FC<PlayingProps> = ({
 
   const handleOptionClick = (option: string) => {
     const currentQuestion = questionList[questionIndex];
-    if (option === currentQuestion.answer) { // Assuming 'answer' is the index of the correct option
-      // Correct answer
+    if (option === currentQuestion.answer) {
       setShowConfetti(true);
       setIsCorrect(true);
       setIsWrong(false);
       setTimeout(() => setShowConfetti(false), 3000);
-      updateCategoryCorrect(); // Update category correct count
+      updateCategoryCorrect();
     } else {
-      // Incorrect answer
       setShowConfetti(false);
       setIsWrong(true);
       setIsCorrect(false);
@@ -99,7 +98,7 @@ const Playing: FC<PlayingProps> = ({
       </button>
       {isWrong && !showResults && (
         <div className="incorrect">
-          incorrect <button className='nextbutton' onClick={handleNextQuestion}>Next</button>{" "}
+          Incorrect. The correct answer is: {correctAnswer}. <button className='nextbutton' onClick={handleNextQuestion}>Next</button>{" "}
         </div>
       )}
       {isCorrect && !showResults && (
