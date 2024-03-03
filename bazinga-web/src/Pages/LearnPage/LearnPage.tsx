@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import "./LearnPage.css";
-import Playing from "./Playing/Playing";
 import Categories from "./Categories/Categories";
 
 interface LearnPageProps {
