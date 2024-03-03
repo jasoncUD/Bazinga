@@ -1,5 +1,5 @@
 /* AuthSwitchComponent.css */
-
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 /* Container for the switch component */
 .authSwitchContainer {
   display: flex;
@@ -18,10 +18,11 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-family: "Bungee", sans-serif;
 }
 
 .switchButton:hover {
-  background-color: #0056b3; /* Darken the button on hover */
+  background-color: #fd7824; /* Darken the button on hover */
 }
 
 /* Add a little space above the button for visual separation */

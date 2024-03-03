@@ -39,7 +39,6 @@ const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) =>
     return (
         <div className="registerContainer">
             <form onSubmit={handleSubmit}>
-                <h2 className="registerHeading">Register</h2>
                 <div className="registerField">
                     <label className="registerLabel">Username:</label>
                     <input className="registerInput" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />

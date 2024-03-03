@@ -25,7 +25,8 @@
 .loginLabel {
   display: block;
   margin-bottom: 5px;
-  color: #666;
+  color: white;
+  font-family: "Bungee", sans-serif;
 }
 
 /* Input fields */
@@ -48,6 +49,7 @@
   border-radius: 4px;
   cursor: pointer;
   width: 100%;
+  font-family: "Bungee", sans-serif;
 }
 
 .loginButton:hover {
