@@ -1,28 +1,21 @@
 import React, { FC, useState } from "react";
 import './Categories.css'; // Assume you have some basic styles defined
 import Playing from "../Playing/Playing";
+import { Category } from "../../../interfaces/category";
 
 interface CategoriesProps {
-    task: string;
-    subject: string;
+    categoryList: Category[];
 }
 
 const Categories: React.FC<CategoriesProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const categories = [
-    { name: "Category 1", id: 1 },
-    { name: "Category 2", id: 2 },
-    { name: "Category 3", id: 3 },
-    { name: "Category 4", id: 4 },
-    { name: "Category 5", id: 5 },
-  ];
   return (
     <div className="categories-container">
       <h1>Categories</h1>
       <div className="category-list">
-        {categories.map((category) => (
+        {props.categoryList.map((category) => (
           <div
-            key={category.id}
+            key={category.name}
             className="category-item"
           >
             {category.name}
@@ -30,7 +23,7 @@ const Categories: React.FC<CategoriesProps> = (props) => {
         ))}
       </div>
       {isPlaying && (
-        <Playing task={props.task} subject={props.subject} />
+        <Playing />
       )}
     </div>
   );

@@ -4,8 +4,6 @@ import "./Playing.css";
 import { Question } from "../../../interfaces/question";
 
 interface PlayingProps {
-  task: string;
-  subject: string;
 }
 
 const Playing: FC<PlayingProps> = (props) => {
