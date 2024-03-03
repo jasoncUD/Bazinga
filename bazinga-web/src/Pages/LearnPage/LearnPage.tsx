@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import "./LearnPage.css";
 import Categories from "./Categories/Categories";
 import { Category } from "../../interfaces/category";
+import LessonCategories from "./Categories/LessonCategories";
 
 interface LearnPageProps {
   setIsBazinga: (isBazinga: boolean) => void;
@@ -11,6 +12,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
   const [isCategories, setIsCategories] = useState(false);
+  const [isLessonCategories, setIsLessonCategories] = useState(false);
   const [student, setStudent] = useState({
     name: "",
     username: "",
@@ -177,6 +179,9 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
         const userData = JSON.parse(storedUserData);
         setStudent(userData);
       }
+      if (task === "Take a lesson") {
+        setIsLessonCategories(true);
+      }
       if (task === "Practice") {
         const requestBody = {
           subject: subject,
@@ -205,15 +210,15 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
               "An error occurred during Category Generation. Please retry in one minute."
             );
           });
+        setIsCategories(true);
       }
-      setIsCategories(true);
     }
     setIsBazinga(false);
   };
 
   return (
     <>
-      {!isCategories && (
+      {!isCategories && !isLessonCategories && (
         <>
           <div className="button-container1">
             <button
@@ -233,16 +238,6 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
               onClick={() => setTask("Take a lesson")}
             >
               Take a lesson
-            </button>
-            <button
-              className="button1"
-              style={{
-                backgroundColor:
-                  task === "Learn something new" ? "green" : "#ff914d",
-              }}
-              onClick={() => setTask("Learn something new")}
-            >
-              Learn something new
             </button>
           </div>
           <div className="button-container1">
@@ -284,6 +279,9 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
       )}
       {isCategories && task !== null && subject !== null && (
         <Categories categoryList={categoryList} />
+      )}
+      {isLessonCategories && task !== null && subject !== null && (
+        <LessonCategories categoryList={categoryList} />
       )}
     </>
   );
