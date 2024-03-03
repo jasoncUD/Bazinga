@@ -30,7 +30,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 1s ease;
   font-family: "Bungee", sans-serif;
   animation: blink 2s linear infinite;
 }

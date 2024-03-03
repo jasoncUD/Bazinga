@@ -27,10 +27,9 @@
   .category-item {
     width: 200px; /* Width of the circle */
     height: 200px; /* Height of the circle */
-    border-radius: 50%; /* Makes the button a perfect circle */
-    background-color: grey; /* Background color */
-    border-color: green;
-    border: 2x solid green;
+    border-radius: 47%; /* Makes the button a perfect circle */
+    background: #45a049;
+    border-color: white;
     color: white; /* Text color */
     outline: none; /* Remove button outline */
     font-size: 16px; /* Font size */
@@ -50,7 +49,7 @@
   }
 
   .category-item:hover {
-    background-color: rgb(91, 91, 91);
+    background: #35993a;
   }
   
   .category-item:nth-child(2) {
@@ -79,12 +78,12 @@
   .line4 {
     position: absolute;
     height: 2px;
-    background-color: black;
+    background-color: white;
     z-index: 1; /* Ensure lines are behind buttons */und-color: black;
 }
 
   .line1 {
-    background-color: black;
+    background-color: white;
     width: 400px;
     height: 2px;
     transform: rotate(50deg);
@@ -94,7 +93,7 @@
   }
   
   .line2 {
-    background-color: black;
+    background-color: white;
     width: 400px;
     height: 2px;
     transform: rotate(127deg);
@@ -104,7 +103,7 @@
   }
 
   .line3 {
-    background-color: black;
+    background-color: white;
     width: 400px;
     height: 2px;
     transform: rotate(127deg);
@@ -114,7 +113,7 @@
   }
 
   .line4 {
-    background-color: black;
+    background-color: white;
     width: 400px;
     height: 2px;
     transform: rotate(50deg);
