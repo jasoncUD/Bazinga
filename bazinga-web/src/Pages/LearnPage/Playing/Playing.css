@@ -1,0 +1,36 @@
+.header11 {
+    color: white;
+    padding: 200px, 20px;
+    font-family: "Bungee", sans-serif;
+}
+
+.header2 {
+    color: white;
+    padding: 120px, 20px;
+    font-family: "Bungee", sans-serif;
+}
+
+.container {
+    border: 5px solid #fd7824; /* Red outline */
+    padding: 20px;
+    width: fit-content; 
+    margin: auto;
+    justify-content: center;
+    /* Add padding as needed */
+    /* Add any other styling you want for the container */
+  }
+
+  .buttons12 {
+    padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  background-color: #fd7824;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Bungee", sans-serif;
+  }
+  .buttons12:hover {
+    background-color: #e46b20;
+  }

@@ -101,8 +101,9 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
               English
             </button>
           </div>
-          <div className="button-container1">
-            <button className="button1" onClick={goToCategories}>
+
+          <div className="button-container3">
+            <button className="button1" onClick={goToPlaying}>
               Continue
             </button>
           </div>

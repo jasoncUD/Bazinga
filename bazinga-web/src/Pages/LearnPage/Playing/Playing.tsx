@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import Confetti from 'react-confetti';
+import Confetti from "react-confetti";
 import "./Playing.css";
 import { Question } from "../../../interfaces/question";
 
@@ -19,6 +19,8 @@ const Playing: FC<PlayingProps> = (props) => {
 
   const [options, setOptions] = useState<string[]>([]);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  const [isWrong, setIsWrong] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
   useEffect(() => {
     const optionsArray = [
@@ -40,7 +42,7 @@ const Playing: FC<PlayingProps> = (props) => {
   }
 
   const speak = (text: string) => {
-    if ('speechSynthesis' in window) {
+    if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 1; // Speed of speech
       utterance.pitch = 1; // Pitch of speech
@@ -54,24 +56,48 @@ const Playing: FC<PlayingProps> = (props) => {
     if (option === sampleQuestion.answer) {
       // Correct answer, show confetti
       setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 2000); // Hide confetti after 2 seconds
+      setIsCorrect(true);
+      setIsWrong(false);
+      setTimeout(() => setShowConfetti(false), 3000); // Hide confetti after 3 seconds
     } else {
       // Incorrect answer
       setShowConfetti(false);
+      setIsWrong(true);
+      setIsCorrect(false);
     }
   };
 
   return (
-    <div>
-        {showConfetti && <Confetti />}
-        <h1>Question #1 for {props.task} and {props.subject} </h1> 
-        <h2>{sampleQuestion.question}</h2>
-        {/* Render option buttons in randomized order */}
-        {options.map((option, index) => (
-          <button key={index} onClick={() => handleOptionClick(option)}>{option}</button>
-        ))}
-        {/* Button to read out the question */}
-        <button onClick={() => speak(sampleQuestion.question)}>Read Question</button>
+    <div className="container">
+      {showConfetti && <Confetti />}
+      <h1 className="header11">Question #1:</h1>
+      <h2 className="header2">{sampleQuestion.question}</h2>
+      {/* Render option buttons in randomized order */}
+      {options.map((option, index) => (
+        <button
+          key={index}
+          onClick={() => handleOptionClick(option)}
+          className="buttons12"
+        >
+          {option}
+        </button>
+      ))}
+      <button
+        onClick={() => speak(sampleQuestion.question)}
+        className="button12"
+      >
+        Read Question
+      </button>
+      {isWrong && (
+        <div>
+          Incorrect <button>Next Question</button>
+        </div>
+      )}
+      {isCorrect && (
+        <div>
+          Correct! <button>Next Question</button>{" "}
+        </div>
+      )}
     </div>
   );
 };
