@@ -87,20 +87,20 @@ const Playing: FC<PlayingProps> = (props) => {
       ))}
       <button
         onClick={() => speak(sampleQuestion.question)}
-        className="button12"
+        className="readbutton"
       >
         Read Question
       </button>
       {isWrong && (
-        <div>
-          Incorrect <button>Next Question</button>
-        </div>
-      )}
+  <div className="incorrect">
+    Incorrect <button className="nextbutton">Next Question</button>
+  </div>
+)}
       {isCorrect && (
-        <div>
-          Correct! <button>Next Question</button>{" "}
-        </div>
-      )}
+  <div className="correct">
+    Correct! <button className="nextbutton">Next Question</button>
+  </div>
+)}
     </div>
   );
 };
