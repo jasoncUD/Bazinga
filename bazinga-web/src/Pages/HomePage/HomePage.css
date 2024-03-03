@@ -14,15 +14,16 @@
     margin: 100px 0;
     font-size: 10em;
     font-family: "Bungee", sans-serif;
+    animation: rainbow 0.3s steps(7) infinite;
 }
 
 .button-container1 {
     margin-top: 0px;
-  }
+}
   
 .button1 {
-    padding: 10px 20px;
-    padding-top: 100px;
+  padding: 10px 20px;
+  padding-top: 100px;
   font-size: 20px;
   color: white;
   background-color: #4caf50;
@@ -32,14 +33,24 @@
   transition: background-color 0.3s ease;
   font-family: "Bungee", sans-serif;
   animation: blink 2s linear infinite;
-  }
+}
+.button1:hover {
+  background-color: #45a049;
+}
 
-  .button1:hover {
-    background-color: #45a049;
-  }
-
-  @keyframes blink {
+@keyframes blink {
     50% {
-      opacity: 0.2; /* hide the button at 50% of the animation duration */
+      opacity: 0.2;
     }
-  }
+}
+
+@keyframes rainbow {
+  0% {color: red;}
+  14% {color: orange;}
+  28% {color: yellow;}
+  42% {color: green;}
+  57% {color: blue;}
+  71% {color: indigo;}
+  85% {color: violet;}
+  100% {color: red;}
+}
