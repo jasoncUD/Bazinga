@@ -6,4 +6,5 @@ export interface Student {
     grade: string;
     completedCourses: string[];
     incompleteCourses: string[];
+    voiceActor?: string;
   };

@@ -2,6 +2,7 @@ import React, { FC, useState } from "react";
 import "./ProfilePage.css";
 import Account from "./ProfileComponents/Account";
 import Progress from "./ProfileComponents/Progress";
+import Settings from "./ProfileComponents/Settings";
 
 interface ProfilePageProps {}
 
@@ -34,11 +35,15 @@ const ProfilePage: FC<ProfilePageProps> = () => {
           <li onClick={() => handleTabChange("progress")} className="menu-item">
             Progress
           </li>
+          <li onClick={() => handleTabChange("settings")} className="menu-item">
+            Settings
+          </li>
         </ul>
       </div>
       <div className="main-content">
         {activeTab === "account" && <Account student={student} />}
         {activeTab === "progress" && <Progress student={student}/>}
+        {activeTab === "settings" && <Settings />}
       </div>
     </div>
   );
