@@ -5,13 +5,14 @@ interface SettingsProps {}
 
 function Settings(props: SettingsProps) {
   const voiceActors = [
+    "Mr. Beast",
     "Taylor Swift",
     "Drake",
     "Lebron James",
     "Jack Harlow",
-    "Jackie Chan",
+    
   ];
-  const [voiceActor, setVoiceActor] = useState("Taylor Swift");
+  const [voiceActor, setVoiceActor] = useState("Mr. Beast");
 
   return (
     <div>
