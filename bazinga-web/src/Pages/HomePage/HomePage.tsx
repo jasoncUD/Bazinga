@@ -21,7 +21,7 @@ const HomePage: FC<HomePageProps> = () => {
     <div className="homebody">
       {isBazinga && (
         <header className="header1">
-          <h1 className="header-title1">Bazinga</h1>
+          <h1 className="header-title1">Bazinga!</h1>
         </header>
       )}
       {!isLearnPage && (
