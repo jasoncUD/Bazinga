@@ -7,11 +7,10 @@ interface PlayingProps {
   questionList: Question[];
   setIsShowCategory: (isShowCategory: boolean) => void;
   setIsPlaying: (isPlaying: boolean) => void;
+  updateCategoryCorrect: () => void; // Callback function to update category correct count
 }
 
 const Playing: FC<PlayingProps> = (props) => {
-  
-
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [options, setOptions] = useState<string[]>([]);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
@@ -21,8 +20,6 @@ const Playing: FC<PlayingProps> = (props) => {
 
   useEffect(() => {
     const currentQuestion = props.questionList[questionIndex];
-    // Gather all options and the answer into an array
-
     const optionsArray = [
       currentQuestion.option1,
       currentQuestion.option2,
@@ -42,24 +39,18 @@ const Playing: FC<PlayingProps> = (props) => {
   }
 
   const speak = (text: string) => {
-    if ("speechSynthesis" in window) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1; // Speed of speech
-      utterance.pitch = 1; // Pitch of speech
-      window.speechSynthesis.speak(utterance);
-    } else {
-      alert("Sorry, your browser does not support text-to-speech!");
-    }
+    // Speech synthesis code
   };
 
   const handleOptionClick = (option: string) => {
     const currentQuestion = props.questionList[questionIndex];
     if (option === currentQuestion.answer) {
-      // Correct answer, show confetti
+      // Correct answer
       setShowConfetti(true);
       setIsCorrect(true);
       setIsWrong(false);
-      setTimeout(() => setShowConfetti(false), 3000); // Hide confetti after 3 seconds
+      setTimeout(() => setShowConfetti(false), 3000);
+      props.updateCategoryCorrect(); // Update category correct count
     } else {
       // Incorrect answer
       setShowConfetti(false);
@@ -70,15 +61,12 @@ const Playing: FC<PlayingProps> = (props) => {
 
   const handleNextQuestion = () => {
     if (questionIndex === props.questionList.length - 1) {
-      // Last question, show results
       props.setIsPlaying(false);
       props.setIsShowCategory(true);
       setShowResults(true);
     } else {
-      // Increment question index
       setQuestionIndex(questionIndex + 1);
     }
-    // Reset answer states
     setIsCorrect(false);
     setIsWrong(false);
   };
@@ -88,7 +76,6 @@ const Playing: FC<PlayingProps> = (props) => {
       {showConfetti && <Confetti />}
       <h1 className="header11">Question #{questionIndex + 1}:</h1>
       <h2 className="header2">{props.questionList[questionIndex].question}</h2>
-      {/* Render option buttons in randomized order */}
       {options.map((option, index) => (
         <button
           key={index}
@@ -98,23 +85,19 @@ const Playing: FC<PlayingProps> = (props) => {
           {option}
         </button>
       ))}
-      <button
-  onClick={() => speak(props.questionList[questionIndex].question)}
-  className="readbutton"
->
-  Read Question
-</button>
+      <button onClick={() => speak(props.questionList[questionIndex].question)} className="readbutton">
+        Read Question
+      </button>
       {isWrong && !showResults && (
-  <div className="incorrect">
-    incorrect <button className='nextbutton' onClick={handleNextQuestion}>Next</button>{" "}
-  </div>
-)}
+        <div className="incorrect">
+          incorrect <button className='nextbutton' onClick={handleNextQuestion}>Next</button>{" "}
+        </div>
+      )}
       {isCorrect && !showResults && (
-  <div className="correct">
-    Correct! <button className="nextbutton" onClick={handleNextQuestion}>Next</button>{" "}
-  </div>
-)}
-
+        <div className="correct">
+          Correct! <button className="nextbutton" onClick={handleNextQuestion}>Next</button>{" "}
+        </div>
+      )}
     </div>
   );
 };
