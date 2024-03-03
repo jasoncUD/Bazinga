@@ -12,6 +12,8 @@ public class OpenAIService {
     
     private final String openAIUrl = "https://api.openai.com/v1/chat/completions";
 
+    
+
     @Value("${openai.api.key}")
     private String apiKey;
 
@@ -23,7 +25,7 @@ public class OpenAIService {
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 
         // Create the request body
-        String requestBody = "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + "\"}]}";
+        String requestBody = "{\"model\": \"gpt-3.5-turbo\", \"messages\": [{\"role\": \"user\", \"content\": \"" + prompt + "\"}], response_format={\"type\": \"json_object\"} }";
 
         HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
 

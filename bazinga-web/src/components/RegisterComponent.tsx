@@ -6,8 +6,10 @@ interface RegisterComponentProps {
   }
 
 const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) => {
+    const [name, setName] = useState('');
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
     const [age, setAge] = useState('');
     const [gradeLevel, setGradeLevel] = useState('');
 
@@ -40,12 +42,20 @@ const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) =>
         <div className="registerContainer">
             <form onSubmit={handleSubmit}>
                 <div className="registerField">
+                    <label className="registerLabel">Name:</label>
+                    <input className="registerInput" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                </div>
+                <div className="registerField">
                     <label className="registerLabel">Username:</label>
                     <input className="registerInput" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
                 </div>
                 <div className="registerField">
                     <label className="registerLabel">Password:</label>
                     <input className="registerInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <div className="registerField">
+                    <label className="registerLabel">Email:</label>
+                    <input className="registerInput" type="string" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="registerField">
                     <label className="registerLabel">Age:</label>

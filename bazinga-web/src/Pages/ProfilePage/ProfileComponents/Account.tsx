@@ -17,7 +17,7 @@ function Account(props: AccountProps) {
           <p>Username: {props.student.username}</p>
           <p>Password: {props.student.password}</p>
           <p>Email: {props.student.email}</p>
-          <p>Grade: {props.student.grade}</p>
+          <p>Grade: {props.student.gradeLevel}</p>
         </div>
     </div>
   );
