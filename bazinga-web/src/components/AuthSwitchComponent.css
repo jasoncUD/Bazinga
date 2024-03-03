@@ -1,0 +1,30 @@
+/* AuthSwitchComponent.css */
+
+/* Container for the switch component */
+.authSwitchContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Styles for the switch button */
+.switchButton {
+  background-color: transparent; /* Bootstrap primary color */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.switchButton:hover {
+  background-color: #0056b3; /* Darken the button on hover */
+}
+
+/* Add a little space above the button for visual separation */
+.switchButton + * {
+  margin-top: 20px;
+}

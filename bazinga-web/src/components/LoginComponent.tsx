@@ -7,23 +7,22 @@ const LoginComponent: React.FC = () => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        // Handle login logic here
         console.log({ username, password });
     };
 
     return (
-        <div className="login-container">
+        <div className="loginContainer">
             <form onSubmit={handleSubmit}>
-                <h2>Login</h2>
-                <div>
-                    <label>Username:</label>
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+                <h2 className="loginHeading">Login</h2>
+                <div className="loginField">
+                    <label className="loginLabel">Username:</label>
+                    <input className="loginInput" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div className="loginField">
+                    <label className="loginLabel">Password:</label>
+                    <input className="loginInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
-                <button type="submit">Login</button>
+                <button className="loginButton" type="submit">Login</button>
             </form>
         </div>
     );

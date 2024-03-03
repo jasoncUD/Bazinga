@@ -4,7 +4,7 @@ import AuthSwitchComponent from '../../components/AuthSwitchComponent';
 
 const LoginPage: React.FC = () => {
     return (
-        <div className="login-page-container">
+        <div>
             <h1>Welcome to Bazinga</h1>
             <AuthSwitchComponent />
         </div>
