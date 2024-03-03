@@ -10,7 +10,7 @@ function Progress(props: ProgressProps) {
   const { incompleteCourses, completedCourses } = props.student;
 
   // Check if both lists are empty
-  const noCoursesAdded = incompleteCourses.length === 0 && completedCourses.length === 0;
+  const noCoursesAdded = incompleteCourses === null && completedCourses === null;
 
   return (
     <div>
