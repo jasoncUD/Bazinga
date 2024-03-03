@@ -7,46 +7,52 @@ interface LessonProps {
   setIsLesson: (isPlaying: boolean) => void;
 }
 
-const Lesson: FC<LessonProps> = (props) => {
-  const backToRoadMap = () => {
-    props.setIsShowCategory(true);
-    props.setIsLesson(false);
-  };
-  // fetch("http://localhost:8080/user/incompleteCourses", {
-  //   method: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  //   body: JSON.stringify(requestBody),
-  // })
-  //   .then((res) => res.json())
-  //   .then((responseData) => {
-  //     console.log(responseData);
-  //     if (responseData) {
-  //       setStudent(JSON.parse(responseData));
-  //       setCategoryList(student.incompleteCourses);
-  //     } else {
-  //       alert(responseData.message || "Input data is wrong");
-  //     }
-  //   })
-  //   .catch((error) => {
-  //     console.error("Generation error:", error);
-  //     alert(
-  //       "An error occurred during Category Generation. Please retry in one minute."
-  //     );
-  //   });
+interface UserData {
+  gradeLevel: string;
+}
 
-  const data = localStorage.getItem("user");
-  let userData; // Declare the userData variable outside of the if statement
-  if (data) {
-    userData = JSON.parse(data); // Assign a value to the userData variable
-  }
+const Lesson: FC<LessonProps> = ({ categoryLesson, setIsShowCategory, setIsLesson }) => {
+  const [youTubeLink, setYouTubeLink] = useState("");
+  const [userData, setUserData] = useState<UserData>({ gradeLevel: '' }); // Initialize userData state
+
+  useEffect(() => {
+    const data = localStorage.getItem("user");
+    setUserData(data ? JSON.parse(data) : { gradeLevel: '' }); // Update userData state
+
+    // Now you would typically not send a body with a GET request, so ensure your API supports it
+    const requestBody = {
+      query: `${categoryLesson}${userData.gradeLevel}`, // Use template literal correctly here
+    };
+
+    // Assuming your API supports POST request here
+    fetch("http://localhost:8080/api/youtube/search", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((res) => res.json())
+      .then((responseData) => {
+        if (responseData) {
+          setYouTubeLink(responseData); // Assume responseData contains an object with a 'link' property
+        }
+      })
+      .catch((error) => {
+      });
+  }, [categoryLesson]); // Depend on categoryLesson
+
+  const backToRoadMap = () => {
+    setIsShowCategory(true);
+    setIsLesson(false);
+  };
 
   return (
     <div className="container">
-      <h1>Learn {props.categoryLesson}</h1>
-      <h1>Grade Level: {userData.gradeLevel}</h1>
-      <p>Youtube Link!</p>
+      <h1>Learn {categoryLesson}</h1>
+      {/* Access userData from state */}
+      <h1>Grade Level: {userData.gradeLevel}</h1> 
+      <p>Youtube Link: {youTubeLink}</p>
       <button onClick={backToRoadMap}>Back</button>
     </div>
   );

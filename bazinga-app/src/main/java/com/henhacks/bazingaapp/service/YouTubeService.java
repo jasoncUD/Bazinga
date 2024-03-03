@@ -5,6 +5,7 @@ import com.google.api.services.youtube.model.SearchResult;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.json.gson.GsonFactory;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -16,7 +17,9 @@ public class YouTubeService {
 
     private static final String APPLICATION_NAME = "YouTube Search";
     private static final GsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-    private static final String API_KEY = "${YOUTUBE_API}"; // Use your actual API key
+
+    @Value("${youtube.api.key}")
+    private static String API_KEY="AIzaSyDh0_oxS5VkP4RX-HWbt-ZTkxfRs4LXElA"; // Use your actual API key
 
     public List<String> searchVideos(String query) throws Exception {
         YouTube youtube = new YouTube.Builder(GoogleNetHttpTransport.newTrustedTransport(), JSON_FACTORY, request -> {})
