@@ -20,6 +20,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ handleLogin }) => {
             body: JSON.stringify({ username, password }),
         }).then((res) => res.json())
         .then((data) => {
+            console.log(data);
         if (data.userId) {
             alert("You have successfully logged in!");
             localStorage.setItem('user', JSON.stringify(data));
