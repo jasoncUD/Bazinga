@@ -2,9 +2,11 @@ import React, { FC, useState } from "react";
 import "./LearnPage.css";
 import Playing from "./Playing/Playing";
 
-interface LearnPageProps {}
+interface LearnPageProps {
+  setIsBazinga: (isBazinga: boolean) => void;
+}
 
-const LearnPage: FC<LearnPageProps> = () => {
+const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,6 +22,7 @@ const LearnPage: FC<LearnPageProps> = () => {
     if (task && subject) {
       setIsPlaying(true);
     }
+    setIsBazinga(false);
   };
   return (
     <>
