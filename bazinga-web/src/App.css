@@ -62,6 +62,7 @@
   background-color: #fd7824;
 }
 
-.background1 {
+.background {
   background-color: #ff914d;
+  min-height: 100vh;
 }

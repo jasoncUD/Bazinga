@@ -72,18 +72,18 @@ const Playing: FC<PlayingProps> = (props) => {
   };
 
   return (
-    <div>
-        {showConfetti && <Confetti />}
-        <h1>Question #1 for {props.task} and {props.subject} </h1> 
-        <h2>{sampleQuestion.question}</h2>
-        {/* Render option buttons in randomized order */}
-        {options.map((option, index) => (
-          <button key={index} onClick={() => handleOptionClick(option)}>{option}</button>
-        ))}
-        {/* Button to read out the question */}
-        <button onClick={() => speak(sampleQuestion.question)}>Read Question</button>
-        {isWrong && <div>Incorrect</div>}
+    <div className="container">
+      {showConfetti && <Confetti />}
+      <h1 className="header11">Question #1:</h1>
+      <h2 className="header2">{sampleQuestion.question}</h2>
+      {/* Render option buttons in randomized order */}
+      {options.map((option, index) => (
+    <button key={index} onClick={() => handleOptionClick(option)} className="buttons12">{option}</button>
+))}
+      <button onClick={() => speak(sampleQuestion.question)} className="button12">Read Question</button>
+      {isWrong && <div>Incorrect</div>}
         {isCorrect && <div>Correct!</div>}
+
     </div>
   );
 };
