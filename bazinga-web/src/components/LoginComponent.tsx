@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import './LoginComponent.css';
 
-const LoginComponent: React.FC = () => {
+interface LoginComponentProps {
+    handleLogin: (status: boolean) => void;
+  }
+  
+
+const LoginComponent: React.FC<LoginComponentProps> = ({ handleLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         console.log({ username, password });
+        handleLogin(true);
+        localStorage.setItem('isLoggedIn', 'true');
+
     };
 
     return (
