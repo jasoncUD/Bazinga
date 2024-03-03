@@ -45,13 +45,10 @@ public class User {
     private int age;
 
     @JsonProperty("completedCourses")
-    private String[] completedCourses;
+    private Categories[] completedCourses;
 
     @JsonProperty("incompleteCourses")
-    private String[] incompleteCourses;
-
-    @JsonProperty("categories")
-    private Categories[] categories;
+    private Categories[] incompleteCourses;
 
     @JsonProperty("voiceActor")
     private String voiceActor;

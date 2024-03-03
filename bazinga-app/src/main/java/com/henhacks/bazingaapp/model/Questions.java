@@ -2,19 +2,19 @@ package com.henhacks.bazingaapp.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.*;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Questions {
 
     @JsonProperty("question")
     private String question;
 
-    @JsonProperty("option1")
-    private String option1;
-
-    @JsonProperty("option2")
-    private String option2;
-    
-    @JsonProperty("option3")
-    private String option3;
+    @JsonProperty("options")
+    private String[] options;
 
     @JsonProperty("answer")
     private String answer;
