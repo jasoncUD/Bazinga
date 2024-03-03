@@ -296,6 +296,15 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
             >
               English
             </button>
+            <button
+              className="button1"
+              style={{
+                backgroundColor: subject === "History" ? "green" : "#ff914d",
+              }}
+              onClick={() => setSubject("History")}
+            >
+              History
+            </button>
           </div>
 
           <div className="button-container3">

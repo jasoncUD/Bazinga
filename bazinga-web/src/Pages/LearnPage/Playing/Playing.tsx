@@ -39,7 +39,16 @@ const Playing: FC<PlayingProps> = ({
   }
 
   const speak = (text: string) => {
-    // Speech synthesis code
+    if ('speechSynthesis' in window) {
+      const speech = new SpeechSynthesisUtterance();
+      speech.text = text;
+      speech.volume = 1;
+      speech.rate = 1;
+      speech.pitch = 1;
+      window.speechSynthesis.speak(speech);
+    } else {
+      console.error("Speech synthesis not supported by your browser.");
+    }
   };
 
   const handleOptionClick = (option: string) => {
