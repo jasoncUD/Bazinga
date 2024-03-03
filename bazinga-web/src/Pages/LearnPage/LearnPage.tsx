@@ -293,6 +293,24 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
             <button
               className="button1"
               style={{
+                backgroundColor: subject === "Art" ? "green" : "#ff914d",
+              }}
+              onClick={() => setSubject("Art")}
+            >
+              Art
+            </button>
+            <button
+              className="button1"
+              style={{
+                backgroundColor: subject === "Music" ? "green" : "#ff914d",
+              }}
+              onClick={() => setSubject("Music")}
+            >
+              Music
+            </button>
+            <button
+              className="button1"
+              style={{
                 backgroundColor: subject === "English" ? "green" : "#ff914d",
               }}
               onClick={() => setSubject("English")}
