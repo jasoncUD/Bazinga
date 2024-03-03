@@ -19,6 +19,9 @@ const Playing: FC<PlayingProps> = (props) => {
 
   const [options, setOptions] = useState<string[]>([]);
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
+  const [isWrong, setIsWrong] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+
 
   useEffect(() => {
     // Gather all options and the answer into an array
@@ -57,10 +60,14 @@ const Playing: FC<PlayingProps> = (props) => {
     if (option === sampleQuestion.answer) {
       // Correct answer, show confetti
       setShowConfetti(true);
+      setIsCorrect(true);
+      setIsWrong(false);
       setTimeout(() => setShowConfetti(false), 2000); // Hide confetti after 2 seconds
     } else {
       // Incorrect answer
       setShowConfetti(false);
+      setIsWrong(true); 
+      setIsCorrect(false);
     }
   };
 
@@ -75,6 +82,8 @@ const Playing: FC<PlayingProps> = (props) => {
         ))}
         {/* Button to read out the question */}
         <button onClick={() => speak(sampleQuestion.question)}>Read Question</button>
+        {isWrong && <div>Incorrect</div>}
+        {isCorrect && <div>Correct!</div>}
     </div>
   );
 };
