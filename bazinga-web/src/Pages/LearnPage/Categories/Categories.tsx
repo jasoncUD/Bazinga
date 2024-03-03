@@ -21,7 +21,7 @@ const Categories: React.FC<CategoriesProps> = (props) => {
         <div
           key={category}
           className="category-circle"
-          onClick={() => handleCategoryClick(category)}
+          // onClick={() => handleCategoryClick(category)}
           style={{
             display: 'inline-block',
             width: '100px',

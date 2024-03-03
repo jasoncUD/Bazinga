@@ -11,7 +11,7 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
   const [isCategories, setIsCategories] = useState(false);
-  // const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const changeTask = (task: string) => {
     setTask(task);
@@ -20,20 +20,12 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
       setSubject(subject);
     };
   };
-  // const goToPlaying = () => {
-  //   if (task && subject) {
-  //     setIsPlaying(true);
-  //   }
-  //   setIsBazinga(false);
-  // };
-  const goToCategories = () => {
+  const goToPlaying = () => {
     if (task && subject) {
-      setIsCategories(true);
+      setIsPlaying(true);
     }
     setIsBazinga(false);
   };
-
-  const goToCategories = () => setStage('categories');
 
   const selectCategory = (category: string) => {
   };
