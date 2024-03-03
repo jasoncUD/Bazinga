@@ -62,7 +62,7 @@ const Playing: FC<PlayingProps> = (props) => {
       setShowConfetti(true);
       setIsCorrect(true);
       setIsWrong(false);
-      setTimeout(() => setShowConfetti(false), 2000); // Hide confetti after 2 seconds
+      setTimeout(() => setShowConfetti(false), 3000); // Hide confetti after 3 seconds
     } else {
       // Incorrect answer
       setShowConfetti(false);
