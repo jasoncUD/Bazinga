@@ -3,7 +3,8 @@ export interface Student {
     username: string;
     password: string;
     email: string;
-    grade: string;
+    age: number;
+    gradeLevel: string;
     completedCourses: string[];
     incompleteCourses: string[];
     voiceActor?: string;

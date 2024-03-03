@@ -22,7 +22,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ handleLogin }) => {
         .then((data) => {
         if (data.userId) {
             alert("You have successfully logged in!");
-            localStorage.setItem('id', data.userId);
+            localStorage.setItem('user', JSON.stringify(data));
             localStorage.setItem('isLoggedIn', 'true');
             handleLogin(true);
         } else {

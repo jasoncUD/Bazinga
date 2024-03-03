@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import "./LearnPage.css";
 import Playing from "./Playing/Playing";
+import Categories from "./Categories/Categories";
 
 interface LearnPageProps {
   setIsBazinga: (isBazinga: boolean) => void;
@@ -9,7 +10,8 @@ interface LearnPageProps {
 const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isCategories, setIsCategories] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
 
   const changeTask = (task: string) => {
     setTask(task);
@@ -18,15 +20,27 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
       setSubject(subject);
     };
   };
-  const goToPlaying = () => {
+  // const goToPlaying = () => {
+  //   if (task && subject) {
+  //     setIsPlaying(true);
+  //   }
+  //   setIsBazinga(false);
+  // };
+  const goToCategories = () => {
     if (task && subject) {
-      setIsPlaying(true);
+      setIsCategories(true);
     }
     setIsBazinga(false);
   };
+
+  const goToCategories = () => setStage('categories');
+
+  const selectCategory = (category: string) => {
+  };
+
   return (
     <>
-      {!isPlaying && (
+      {!isCategories && (
         <>
           <div className="button-container1">
             <button
@@ -88,14 +102,14 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
             </button>
           </div>
           <div className="button-container1">
-            <button className="button1" onClick={goToPlaying}>
+            <button className="button1" onClick={goToCategories}>
               Continue
             </button>
           </div>
         </>
       )}
-      {isPlaying && task !== null && subject !== null && (
-        <Playing task={task} subject={subject} />
+      {isCategories && task !== null && subject !== null && (
+        <Categories task={task} subject={subject} onCategorySelect={selectCategory} />
       )}
     </>
   );
