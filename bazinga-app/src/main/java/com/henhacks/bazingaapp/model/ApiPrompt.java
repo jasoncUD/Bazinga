@@ -7,10 +7,7 @@ import lombok.Data;
 @Data
 public class ApiPrompt {
 
-    @JsonProperty("goal")
-    private String goal;
-
-    @JsonProperty("goal")
+    @JsonProperty("subject")
     private String subject;
 
     @JsonProperty("age")
