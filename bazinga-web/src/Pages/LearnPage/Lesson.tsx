@@ -21,7 +21,7 @@ const Lesson: FC<LessonProps> = ({ categoryLesson, setIsShowCategory, setIsLesso
 
     // Now you would typically not send a body with a GET request, so ensure your API supports it
     const requestBody = {
-      query: `${categoryLesson}${userData.gradeLevel}`, // Use template literal correctly here
+      query: "subtraction for 5th grade", // Use template literal correctly here
     };
 
     // Assuming your API supports POST request here
