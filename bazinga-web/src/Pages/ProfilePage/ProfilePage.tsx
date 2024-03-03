@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import "./ProfilePage.css";
 import Account from "./ProfileComponents/Account";
 import Progress from "./ProfileComponents/Progress";
@@ -8,26 +8,34 @@ interface ProfilePageProps {}
 
 const ProfilePage: FC<ProfilePageProps> = () => {
   const [activeTab, setActiveTab] = useState("account");
+  const [student, setStudent] = useState({
+    name: "",
+    username: "",
+    password: "",
+    email: "",
+    age: 0,
+    gradeLevel: "",
+    completedCourses: [""],
+    incompleteCourses: [""],
+  });
+
+  useEffect(() => {
+    // Fetch the student data from localStorage when the component mounts
+    const storedUserData = localStorage.getItem('user');
+    if (storedUserData) {
+      const userData = JSON.parse(storedUserData);
+      setStudent(userData);
+    }
+  }, []);
+
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
 
-  const [student, setStudent] = useState({
-    name: "John Doe",
-    username: "johndoe",
-    password: "password",
-    email: "johnDoe@gmail.com",
-    grade: "10",
-    completedCourses: ["Math", "Science", "English"],
-    incompleteCourses: ["History", "Art"],
-  });
-  const { name, username, password, email, grade, completedCourses } = student;
-
   return (
     <div className="profile-container">
       <div className="sidebar">
-        <div className="sidebar-header">
-        </div>
+        <div className="sidebar-header"></div>
         <ul className="menu-list">
           <li onClick={() => handleTabChange("account")} className="menu-item">
             Account
@@ -42,7 +50,7 @@ const ProfilePage: FC<ProfilePageProps> = () => {
       </div>
       <div className="main-content">
         {activeTab === "account" && <Account student={student} />}
-        {activeTab === "progress" && <Progress student={student}/>}
+        {activeTab === "progress" && <Progress student={student} />}
         {activeTab === "settings" && <Settings />}
       </div>
     </div>

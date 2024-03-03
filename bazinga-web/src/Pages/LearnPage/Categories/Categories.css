@@ -1,0 +1,19 @@
+.categories-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.category-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #ff914d; /* Or any color */
+  color: white; /* Adjust based on your preference */
+  font-size: 20px; /* Adjust based on your preference */
+}

@@ -44,18 +44,17 @@ const Playing: FC<PlayingProps> = (props) => {
   useEffect(() => {
     const currentQuestion = sampleQuestions[questionIndex];
     // Gather all options and the answer into an array
+
     const optionsArray = [
       currentQuestion.option1,
       currentQuestion.option2,
       currentQuestion.option3,
       currentQuestion.answer,
     ];
-    // Shuffle the options
     const shuffledOptions = shuffleArray(optionsArray);
     setOptions(shuffledOptions);
   }, [sampleQuestions, questionIndex]);
 
-  // Fisher-Yates (Knuth) Shuffle
   function shuffleArray(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -140,6 +139,7 @@ const Playing: FC<PlayingProps> = (props) => {
           <button>Results</button>
         </div>
       )}
+
     </div>
   );
 };

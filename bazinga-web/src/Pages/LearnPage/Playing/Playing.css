@@ -21,7 +21,8 @@
   }
 
   .buttons12 {
-    padding: 10px 20px;
+  
+  margin-right: 10px;
   font-size: 20px;
   color: white;
   background-color: #fd7824;
@@ -34,3 +35,61 @@
   .buttons12:hover {
     background-color: #e46b20;
   }
+
+  .incorrect {
+    margin-top: 20px;
+    color: red;
+    padding: 200px, 20px;
+    font-family: "Bungee", sans-serif;
+    text-align: center;
+}
+
+.readbutton {
+  padding: 10px 20px;
+  font-size: 10px;
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Bungee", sans-serif;
+}
+
+.readbutton:hover {
+  color: black;
+}
+
+.correct {
+    margin-top: 20px;
+    color: green;
+    padding: 200px, 20px;
+    font-family: "Bungee", sans-serif;
+    text-align: center;
+}
+
+.nextbutton {
+    margin-top: 20px;
+    color: white;
+    border-color: transparent;
+    font-family: "Bungee", sans-serif;
+    text-align: center;
+    background: transparent;
+    animation: blink 1s linear infinite;
+    opacity: 1;
+}
+
+.nextbutton:hover {
+  color: black;
+  animation-play-state: paused;
+
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { FC, useState } from "react";
 import "./LearnPage.css";
 import Playing from "./Playing/Playing";
+import Categories from "./Categories/Categories";
 
 interface LearnPageProps {
   setIsBazinga: (isBazinga: boolean) => void;
@@ -9,6 +10,7 @@ interface LearnPageProps {
 const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
+  const [isCategories, setIsCategories] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const changeTask = (task: string) => {
@@ -24,6 +26,10 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
     }
     setIsBazinga(false);
   };
+
+  const selectCategory = (category: string) => {
+  };
+
   return (
     <>
       {!isPlaying && (
@@ -87,6 +93,7 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
               English
             </button>
           </div>
+
           <div className="button-container3">
             <button className="button1" onClick={goToPlaying}>
               Continue
