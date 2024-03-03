@@ -3,6 +3,7 @@ import "./LearnPage.css";
 import Categories from "./Categories/Categories";
 import { Category } from "../../interfaces/category";
 import LessonCategories from "./Categories/LessonCategories";
+import { Loading } from "../../components/loading";
 
 interface LearnPageProps {
   setIsBazinga: (isBazinga: boolean) => void;
@@ -13,6 +14,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   const [subject, setSubject] = useState<string | null>(null);
   const [isCategories, setIsCategories] = useState(false);
   const [isLessonCategories, setIsLessonCategories] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [student, setStudent] = useState({
     id: "",
     name: "",
@@ -212,6 +214,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
       }
     }
     setIsBazinga(false);
+    setIsLoading(true);
   };
 
   const saveCategories = (data: any) => {
@@ -306,7 +309,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
               History
             </button>
           </div>
-
+          {isLoading && <Loading />}
           <div className="button-container3">
             <button className="button1" onClick={goToCategory}>
               Continue
