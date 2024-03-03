@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import "./Categories.css"; // Assume you have some basic styles defined
+import "./Categories.css";
 import Playing from "../Playing/Playing";
 import { Category } from "../../../interfaces/category";
 import { Question } from "../../../interfaces/question";
@@ -12,12 +12,30 @@ const Categories: React.FC<CategoriesProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isShowCategory, setIsShowCategory] = useState(true);
   const [questionList, setQuestionList] = useState<Question[] | null>(null);
-  //This function takes in a category parameter
+
+  // Create state to manage category data
+  const [categories, setCategories] = useState<Category[]>(props.categoryList);
+
+  // Callback function to update category correct count
+  const updateCategoryCorrect = () => {
+    const updatedCategories = categories.map((category) => {
+      if (category.questions === questionList) {
+        return {
+          ...category,
+          correct: category.correct + 1, // Increase correct count by 1
+        };
+      }
+      return category;
+    });
+    setCategories(updatedCategories);
+  };
+
   const handleCategoryClick = (category: Category) => {
     setQuestionList(category.questions);
     setIsPlaying(true);
     setIsShowCategory(false);
   };
+
   return (
     <div className="categories-container">
       {isShowCategory && (
@@ -26,11 +44,11 @@ const Categories: React.FC<CategoriesProps> = (props) => {
             <h1>Let's Learn!</h1>
           </div>
           <div className="category-list">
-            {props.categoryList.map((category: Category) => (
+            {categories.map((category: Category) => (
               <button
                 key={category.name}
                 className="category-item"
-                onClick={() => handleCategoryClick(category)} // Assuming you have a function handleCategoryClick to handle clicks
+                onClick={() => handleCategoryClick(category)}
               >
                 {category.name} {category.correct}/{category.questions.length}
               </button>
@@ -44,9 +62,12 @@ const Categories: React.FC<CategoriesProps> = (props) => {
       )}
 
       {isPlaying && questionList !== null && (
-        <Playing questionList={questionList} 
-        setIsShowCategory={setIsShowCategory}
-        setIsPlaying={setIsPlaying}/>
+        <Playing
+          questionList={questionList}
+          setIsShowCategory={setIsShowCategory}
+          setIsPlaying={setIsPlaying}
+          updateCategoryCorrect={updateCategoryCorrect} // Pass the callback function
+        />
       )}
     </div>
   );
