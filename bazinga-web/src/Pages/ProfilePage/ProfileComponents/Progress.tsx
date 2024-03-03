@@ -9,10 +9,10 @@ interface ProgressProps {
 function Progress(props: ProgressProps) {
   return (
     <div>
-      <div className="header">
+      <div className="header1">
         <h1>Progress</h1>
         <div className="student-info">
-          <p>Topics To Improve</p>
+          <p>Topics To Improve:</p>
           <ul>
             {props.student.incompleteCourses.map((course, index) => (
               <li key={index}>{course}</li>

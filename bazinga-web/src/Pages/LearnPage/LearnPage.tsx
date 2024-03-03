@@ -25,67 +25,67 @@ const LearnPage: FC<LearnPageProps> = () => {
     <>
       {!isPlaying && (
         <>
-          <div className="button-container">
+          <div className="button-container1">
             <button
-              className="button"
+              className="button1"
               style={{
-                backgroundColor: task === "Practice" ? "green" : "white",
+                backgroundColor: task === "Practice" ? "green" : "#ff914d",
               }}
               onClick={() => setTask("Practice")}
             >
               Practice
             </button>
             <button
-              className="button"
+              className="button1"
               style={{
-                backgroundColor: task === "Take a lesson" ? "green" : "white",
+                backgroundColor: task === "Take a lesson" ? "green" : "#ff914d",
               }}
               onClick={() => setTask("Take a lesson")}
             >
               Take a lesson
             </button>
             <button
-              className="button"
+              className="button1"
               style={{
                 backgroundColor:
-                  task === "Learn something new" ? "green" : "white",
+                  task === "Learn something new" ? "green" : "#ff914d",
               }}
               onClick={() => setTask("Learn something new")}
             >
               Learn something new
             </button>
           </div>
-          <div className="button-container">
+          <div className="button-container1">
             <button
-              className="button"
+              className="button1"
               style={{
-                backgroundColor: subject === "Math" ? "green" : "white",
+                backgroundColor: subject === "Math" ? "green" : "#ff914d",
               }}
               onClick={() => setSubject("Math")}
             >
               Math
             </button>
             <button
-              className="button"
+              className="button1"
               style={{
-                backgroundColor: subject === "Science" ? "green" : "white",
+                backgroundColor: subject === "Science" ? "green" : "#ff914d",
               }}
               onClick={() => setSubject("Science")}
             >
               Science
             </button>
             <button
-              className="button"
+              className="button1"
               style={{
-                backgroundColor: subject === "English" ? "green" : "white",
+                backgroundColor: subject === "English" ? "green" : "#ff914d",
               }}
               onClick={() => setSubject("English")}
             >
               English
             </button>
           </div>
-          <div className="button-container">
-            <button className="button" onClick={goToPlaying}>
+          <div className="button-container1">
+            <button className="button1" onClick={goToPlaying}>
               Continue
             </button>
           </div>

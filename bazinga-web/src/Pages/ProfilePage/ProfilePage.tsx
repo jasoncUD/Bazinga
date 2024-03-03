@@ -6,7 +6,7 @@ import Progress from "./ProfileComponents/Progress";
 interface ProfilePageProps {}
 
 const ProfilePage: FC<ProfilePageProps> = () => {
-  const [activeTab, setActiveTab] = useState("progress");
+  const [activeTab, setActiveTab] = useState("account");
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
   };
@@ -26,7 +26,6 @@ const ProfilePage: FC<ProfilePageProps> = () => {
     <div className="profile-container">
       <div className="sidebar">
         <div className="sidebar-header">
-          <h2>Menu</h2>
         </div>
         <ul className="menu-list">
           <li onClick={() => handleTabChange("account")} className="menu-item">
