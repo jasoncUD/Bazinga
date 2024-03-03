@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import "./LearnPage.css";
-import Playing from "./Playing/Playing";
 import Categories from "./Categories/Categories";
 
 interface LearnPageProps {
@@ -21,6 +20,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   };
   const goToCategory = () => {
     if (task && subject) {
+
       setIsCategories(true);
     }
     setIsBazinga(false);

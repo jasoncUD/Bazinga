@@ -4,4 +4,5 @@ export interface Question {
     option2: string;
     option3: string;
     answer: string;
+    feedback: string;
 };
