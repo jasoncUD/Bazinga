@@ -5,6 +5,13 @@
     font-size: 1.2em;
 }
 
+.green {
+    font-family: "Bungee", sans-serif;
+    color: white;
+    margin-top: 50px; /* Adjust this value to move the text down */
+    font-size: .5em;
+}
+
 @keyframes rainbow {
     0% {color: red;}
     14% {color: orange;}
@@ -28,7 +35,7 @@
     width: 200px; /* Width of the circle */
     height: 200px; /* Height of the circle */
     border-radius: 47%; /* Makes the button a perfect circle */
-    background: #45a049;
+    background: #ff5d5d;
     border-color: white;
     color: white; /* Text color */
     outline: none; /* Remove button outline */
@@ -47,9 +54,9 @@
     top: 100px;
     left: 200px;
   }
-
+  
   .category-item:hover {
-    background: #35993a;
+    background: #ff403d;
   }
   
   .category-item:nth-child(2) {
