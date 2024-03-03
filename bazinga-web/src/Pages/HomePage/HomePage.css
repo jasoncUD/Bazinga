@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
 
-body {
+.homebody {
   background-color: #FF914D;
 }
 
-.header {
+.header1 {
     color: white;
     padding: 200px, 20px;
     font-family: "Bungee", sans-serif;
 }
 
-.header-title {
+.header-title1 {
     margin: 100px 0;
-    font-size: 2.5em;
+    font-size: 10em;
     font-family: "Bungee", sans-serif;
 }
 
@@ -20,9 +20,18 @@ body {
     margin-top: 50px;
   }
   
-  .button1 {
-    width: 150px; /* Increase width to make the button bigger */
-    height: 60px; /* Increase height to make the button bigger */
-    font-family: "Bungee", sans-serif; /* Set font-family to "Bungee" */
-    font-size: 1.2em; /* Adjust font size as needed */
+.button1 {
+    padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #ff914d;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: "Bungee", sans-serif;
+  }
+
+  .button1:hover {
+    background-color: #fd7824;
   }
