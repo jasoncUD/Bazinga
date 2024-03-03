@@ -11,7 +11,9 @@ const Categories: React.FC<CategoriesProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
     <div className="categories-container">
-      <h1>Categories</h1>
+      <div className="letslearn">
+  <h1>Let's Learn!</h1>
+</div>
       <div className="category-list">
         {props.categoryList.map((category) => (
           <div
@@ -25,6 +27,10 @@ const Categories: React.FC<CategoriesProps> = (props) => {
       {isPlaying && (
         <Playing />
       )}
+      <div className="line1"></div>
+      <div className="line2"></div>
+      <div className="line3"></div>
+      <div className="line4"></div>
     </div>
   );
 };
