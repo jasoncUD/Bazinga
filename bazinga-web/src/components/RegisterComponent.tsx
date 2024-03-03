@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import './RegisterComponent.css';
 
-const RegisterComponent: React.FC = () => {
+interface RegisterComponentProps {
+    handleLogin: (status: boolean) => void;
+  }
+
+const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [age, setAge] = useState('');
@@ -9,7 +13,10 @@ const RegisterComponent: React.FC = () => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
+        handleLogin(true);
         console.log({ username, password, age, gradeLevel });
+        localStorage.setItem('isLoggedIn', 'true');
+
     };
 
     return (

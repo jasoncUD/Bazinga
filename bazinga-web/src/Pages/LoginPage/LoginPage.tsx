@@ -1,12 +1,19 @@
 // LoginPage.tsx
 import React from 'react';
 import AuthSwitchComponent from '../../components/AuthSwitchComponent';
+import './LoginPage.css'
 
-const LoginPage: React.FC = () => {
+interface LoginPageProps {
+    isLoggedIn: boolean;
+    handleLogin: (status: boolean) => void;
+  }
+  
+
+const LoginPage: React.FC<LoginPageProps> = ({ isLoggedIn, handleLogin }) => {
     return (
         <div>
-            <h1>Welcome to Bazinga</h1>
-            <AuthSwitchComponent />
+            <h1 className='welcomeText'>Welcome to Bazinga</h1>
+            <AuthSwitchComponent isLoggedIn={isLoggedIn} handleLogin={handleLogin} />
         </div>
     );
 };
