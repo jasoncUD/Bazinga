@@ -13,10 +13,27 @@ const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) =>
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        handleLogin(true);
-        console.log({ username, password, age, gradeLevel });
-        localStorage.setItem('isLoggedIn', 'true');
-
+        fetch("http://localhost:8080/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password, age, gradeLevel }),
+        }).then((res) => res.json())
+        .then((data) => {
+        if (data.userId) {
+            alert("You have successfully logged in!");
+            localStorage.setItem('id', data.userId);
+            localStorage.setItem('isLoggedIn', 'true');
+            handleLogin(true);
+        } else {
+            alert(data.message || "Registration error");
+        }
+        })
+        .catch((error) => {
+        console.error("Registration error:", error);
+        alert("An error occurred during Registration.");
+        })
     };
 
     return (

@@ -5,33 +5,30 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.*;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Document
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     private String userId;
 
-    @JsonProperty
+    @JsonProperty("username")
     private String username;
 
-    @JsonProperty
+    @JsonProperty("password") 
     private String password;
 
-    @JsonProperty
+    @JsonProperty("gradeLevel") 
     private int gradeLevel;
     
-    @JsonProperty
+    @JsonProperty("age")
     private int age;
 
-    public User(@JsonProperty("username") String username, @JsonProperty("password") String password, @JsonProperty("gradeLevel") int gradeLevel, @JsonProperty("age") int age) {
-        this.username = username;
-        this.password = password;
-        this.gradeLevel = gradeLevel;
-        this.age = age;
-    }
-    
 }

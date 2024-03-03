@@ -12,9 +12,27 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ handleLogin }) => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        console.log({ username, password });
-        handleLogin(true);
-        localStorage.setItem('isLoggedIn', 'true');
+        fetch("http://localhost:8080/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        }).then((res) => res.json())
+        .then((data) => {
+        if (data.userId) {
+            alert("You have successfully logged in!");
+            localStorage.setItem('id', data.userId);
+            localStorage.setItem('isLoggedIn', 'true');
+            handleLogin(true);
+        } else {
+            alert(data.message || "Username or Password is wrong");
+        }
+        })
+        .catch((error) => {
+        console.error("Login error:", error);
+        alert("An error occurred during Login.");
+        })
 
     };
 
