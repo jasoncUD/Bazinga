@@ -50,6 +50,9 @@ public class User {
     @JsonProperty("incompleteCourses")
     private String[] incompleteCourses;
 
+    @JsonProperty("categories")
+    private Categories[] categories;
+
     @JsonProperty("voiceActor")
     private String voiceActor;
 
