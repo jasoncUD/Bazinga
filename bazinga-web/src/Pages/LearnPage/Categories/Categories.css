@@ -1,0 +1,125 @@
+.letslearn {
+    font-family: "Bungee", sans-serif;
+    animation: rainbow 1s steps(7) infinite;
+    margin-top: 50px; /* Adjust this value to move the text down */
+    font-size: 1.2em;
+}
+
+@keyframes rainbow {
+    0% {color: red;}
+    14% {color: orange;}
+    28% {color: yellow;}
+    42% {color: green;}
+    57% {color: blue;}
+    71% {color: indigo;}
+    85% {color: violet;}
+    100% {color: red;}
+  }
+
+.categories-container {
+    position: relative; /* Required for positioning children */
+  }
+  
+  .category-list {
+    position: absolute; /* Required for positioning buttons */
+    z-index: 2; /* Ensure buttons are above lines */
+  }
+  .category-item {
+    width: 200px; /* Width of the circle */
+    height: 200px; /* Height of the circle */
+    border-radius: 50%; /* Makes the button a perfect circle */
+    background-color: grey; /* Background color */
+    border-color: green;
+    border: 2x solid green;
+    color: white; /* Text color */
+    outline: none; /* Remove button outline */
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Font weight */
+    display: flex; /* Enables vertical alignment */
+    align-items: center; /* Vertically align text */
+    justify-content: center; /* Horizontally align text */
+    position: absolute; /* Required for positioning */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    font-family: "Bungee", sans-serif;
+  }
+  
+  /* Adjust position of each category */
+  .category-item:nth-child(1) {
+    top: 100px;
+    left: 200px;
+  }
+
+  .category-item:hover {
+    background-color: rgb(91, 91, 91);
+  }
+  
+  .category-item:nth-child(2) {
+    top: 400px;
+    left: 420px;
+  }
+
+  .category-item:nth-child(3) {
+    top: 100px;
+    left: 640px;
+  }
+
+  .category-item:nth-child(4) {
+    top: 400px;
+    left: 860px;
+  }
+
+  .category-item:nth-child(5) {
+    top: 100px;
+    left: 1080px;
+  }
+
+  .line1,
+  .line2,
+  .line3,
+  .line4 {
+    position: absolute;
+    height: 2px;
+    background-color: black;
+    z-index: 1; /* Ensure lines are behind buttons */und-color: black;
+}
+
+  .line1 {
+    background-color: black;
+    width: 400px;
+    height: 2px;
+    transform: rotate(50deg);
+    position: absolute;
+    left: 190px;
+    top: 400px
+  }
+  
+  .line2 {
+    background-color: black;
+    width: 400px;
+    height: 2px;
+    transform: rotate(127deg);
+    position: absolute;
+    left: 400px;
+    top: 450px
+  }
+
+  .line3 {
+    background-color: black;
+    width: 400px;
+    height: 2px;
+    transform: rotate(127deg);
+    position: absolute;
+    left: 850px;
+    top: 450px
+  }
+
+  .line4 {
+    background-color: black;
+    width: 400px;
+    height: 2px;
+    transform: rotate(50deg);
+    position: absolute;
+    left: 650px;
+    top: 400px
+  }
+

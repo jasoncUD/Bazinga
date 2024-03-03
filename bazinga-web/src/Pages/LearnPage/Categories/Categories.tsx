@@ -16,22 +16,33 @@ const Categories: React.FC<CategoriesProps> = (props) => {
     { name: "Category 4", id: 4 },
     { name: "Category 5", id: 5 },
   ];
+
+  const handleCategoryClick = (categoryId: number) => {
+    // This function does nothing right now
+  };
   return (
     <div className="categories-container">
-      <h1>Categories</h1>
+      <div className="letslearn">
+  <h1>Let's Learn!</h1>
+</div>
       <div className="category-list">
         {categories.map((category) => (
-          <div
+          <button
             key={category.id}
             className="category-item"
+            onClick={() => handleCategoryClick(category.id)} // Handle click event if needed
           >
             {category.name}
-          </div>
+          </button>
         ))}
       </div>
       {isPlaying && (
         <Playing task={props.task} subject={props.subject} />
       )}
+      <div className="line1"></div>
+      <div className="line2"></div>
+      <div className="line3"></div>
+      <div className="line4"></div>
     </div>
   );
 };
