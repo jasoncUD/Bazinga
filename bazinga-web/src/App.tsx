@@ -39,7 +39,6 @@ function App() {
   }
   return (
     <div className="App">
-        <div className="background1">
             <div className="navbar">
                 <button onClick={showHome}>Home</button>
                 <button onClick={showProfile}>Profile</button>
@@ -49,7 +48,6 @@ function App() {
             {isHomePage && <HomePage />}
             {isLogin && <LoginPage />}
         </div>
-    </div>
 );
 }
 
