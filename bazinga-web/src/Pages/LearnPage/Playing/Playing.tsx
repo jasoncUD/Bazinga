@@ -4,36 +4,11 @@ import "./Playing.css";
 import { Question } from "../../../interfaces/question";
 
 interface PlayingProps {
+  questionList: Question[];
 }
 
 const Playing: FC<PlayingProps> = (props) => {
-  const [sampleQuestions, setSampleQuestions] = useState<Question[]>([
-    {
-      question: "What is the capital of France?",
-      option1: "Tokyo",
-      option2: "London",
-      option3: "New York",
-      answer: "Paris",
-      feedback: "Paris is the capital of France!",
-    },
-    {
-      question: "What is the largest planet in our solar system?",
-      option1: "Mars",
-      option2: "Jupiter",
-      option3: "Earth",
-      answer: "Uranus",
-      feedback: "Jupiter is the largest planet!",
-    },
-    {
-      question: "What is the powerhouse of the cell?",
-      option1: "Nucleus",
-      option2: "Ribosome",
-      option3: "Mitochondria",
-      answer: "Mitochondria",
-      feedback: "Mitochondria is the powerhouse of the cell!",
-    },
-    // Add more sample questions here
-  ]);
+  
 
   const [questionIndex, setQuestionIndex] = useState<number>(0);
   const [options, setOptions] = useState<string[]>([]);
@@ -43,7 +18,7 @@ const Playing: FC<PlayingProps> = (props) => {
   const [showResults, setShowResults] = useState<boolean>(false);
 
   useEffect(() => {
-    const currentQuestion = sampleQuestions[questionIndex];
+    const currentQuestion = props.questionList[questionIndex];
     // Gather all options and the answer into an array
 
     const optionsArray = [
@@ -54,7 +29,7 @@ const Playing: FC<PlayingProps> = (props) => {
     ];
     const shuffledOptions = shuffleArray(optionsArray);
     setOptions(shuffledOptions);
-  }, [sampleQuestions, questionIndex]);
+  }, [props.questionList, questionIndex]);
 
   function shuffleArray(array: string[]) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -76,7 +51,7 @@ const Playing: FC<PlayingProps> = (props) => {
   };
 
   const handleOptionClick = (option: string) => {
-    const currentQuestion = sampleQuestions[questionIndex];
+    const currentQuestion = props.questionList[questionIndex];
     if (option === currentQuestion.answer) {
       // Correct answer, show confetti
       setShowConfetti(true);
@@ -92,7 +67,7 @@ const Playing: FC<PlayingProps> = (props) => {
   };
 
   const handleNextQuestion = () => {
-    if (questionIndex === sampleQuestions.length - 1) {
+    if (questionIndex === props.questionList.length - 1) {
       // Last question, show results
       setShowResults(true);
     } else {
@@ -108,7 +83,7 @@ const Playing: FC<PlayingProps> = (props) => {
     <div className="container">
       {showConfetti && <Confetti />}
       <h1 className="header11">Question #{questionIndex + 1}:</h1>
-      <h2 className="header2">{sampleQuestions[questionIndex].question}</h2>
+      <h2 className="header2">{props.questionList[questionIndex].question}</h2>
       {/* Render option buttons in randomized order */}
       {options.map((option, index) => (
         <button
@@ -120,7 +95,7 @@ const Playing: FC<PlayingProps> = (props) => {
         </button>
       ))}
       <button
-  onClick={() => speak(sampleQuestions[questionIndex].question)}
+  onClick={() => speak(props.questionList[questionIndex].question)}
   className="readbutton"
 >
   Read Question
