@@ -10,16 +10,15 @@ interface CategoriesProps {
 
 const Categories: React.FC<CategoriesProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const promptPlaying = (questions: Question[]) => {
-
-  };
+  const promptPlaying = (questions: Question[]) => {};
   return (
     <div className="categories-container">
       <h1>Categories</h1>
       <div className="category-list">
         {props.categoryList.map((category) => (
           <div key={category.name} className="category-item">
-            <button> onClick={() => promptPlaying(category.questions)} {category.name}</button>
+            {/* <button> onClick={() => promptPlaying(category.questions)} {category.name}</button> */}
+            <button>  {category.name}</button>
           </div>
         ))}
       </div>
