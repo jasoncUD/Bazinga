@@ -7,7 +7,7 @@ function Settings(props: SettingsProps) {
   const voiceActors = [
     "Mr. Beast",
     "Taylor Swift",
-    "Drake",
+    "Dwight Schrute",
     "Lebron James",
     "Jack Harlow",
     
