@@ -10,7 +10,7 @@ function Account(props: AccountProps) {
 
   return (
     <div>
-        <div className="header">
+        <div className="header1">
             <h1>Account</h1>
             <h2>Student Information</h2>
           <p>Name: {props.student.name}</p>
