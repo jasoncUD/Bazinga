@@ -15,10 +15,13 @@ const Categories: React.FC<CategoriesProps> = (props) => {
   <h1>Let's Learn!</h1>
 </div>
       <div className="category-list">
-            onClick={() => handleCategoryClick(category.id)} // Handle click event if needed
+        {props.categoryList.map((category) => (
+          <div
+            key={category.name}
+            className="category-item"
           >
             {category.name}
-          </button>
+          </div>
         ))}
       </div>
       {isPlaying && (
