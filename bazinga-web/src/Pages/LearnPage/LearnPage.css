@@ -10,15 +10,15 @@
     font-size: 6em; /* Adjust as needed */
   }
 
-.button-container {
+.button-container1 {
     margin-top: 20px; /* Adjust as needed */
   }
 
-  .button {
+  .button1 {
     margin: 0 10px;
     padding: 10px 20px;
-    background-color: white;
-    color: black;
+    background-color: #ff914d;
+    color: white;
     border: none;
     border-radius: 50%; 
     cursor: pointer;
