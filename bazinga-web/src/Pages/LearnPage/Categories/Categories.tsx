@@ -26,13 +26,13 @@ const Categories: React.FC<CategoriesProps> = (props) => {
             <h1>Let's Learn!</h1>
           </div>
           <div className="category-list">
-            {props.categoryList.map((category) => (
+            {props.categoryList.map((category: Category) => (
               <button
                 key={category.name}
                 className="category-item"
                 onClick={() => handleCategoryClick(category)} // Assuming you have a function handleCategoryClick to handle clicks
               >
-                {category.name}
+                {category.name} {category.correct}/{category.questions.length}
               </button>
             ))}
           </div>
@@ -44,7 +44,9 @@ const Categories: React.FC<CategoriesProps> = (props) => {
       )}
 
       {isPlaying && questionList !== null && (
-        <Playing questionList={questionList} />
+        <Playing questionList={questionList} 
+        setIsShowCategory={setIsShowCategory}
+        setIsPlaying={setIsPlaying}/>
       )}
     </div>
   );

@@ -5,6 +5,8 @@ import { Question } from "../../../interfaces/question";
 
 interface PlayingProps {
   questionList: Question[];
+  setIsShowCategory: (isShowCategory: boolean) => void;
+  setIsPlaying: (isPlaying: boolean) => void;
 }
 
 const Playing: FC<PlayingProps> = (props) => {
@@ -69,6 +71,8 @@ const Playing: FC<PlayingProps> = (props) => {
   const handleNextQuestion = () => {
     if (questionIndex === props.questionList.length - 1) {
       // Last question, show results
+      props.setIsPlaying(false);
+      props.setIsShowCategory(true);
       setShowResults(true);
     } else {
       // Increment question index
