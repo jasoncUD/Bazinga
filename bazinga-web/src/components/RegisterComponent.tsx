@@ -40,35 +40,43 @@ const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) =>
 
     return (
         <div className="registerContainer">
-            <form onSubmit={handleSubmit}>
-                <div className="registerField">
-                    <label className="registerLabel">Name:</label>
-                    <input className="registerInput" type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                </div>
-                <div className="registerField">
-                    <label className="registerLabel">Username:</label>
-                    <input className="registerInput" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-                </div>
-                <div className="registerField">
-                    <label className="registerLabel">Password:</label>
-                    <input className="registerInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                </div>
-                <div className="registerField">
-                    <label className="registerLabel">Email:</label>
-                    <input className="registerInput" type="string" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </div>
-                <div className="registerField">
-                    <label className="registerLabel">Age:</label>
-                    <input className="registerInput" type="number" value={age} onChange={(e) => setAge(e.target.value)} />
-                </div>
-                <div className="registerField">
-                    <label className="registerLabel">Grade Level:</label>
-                    <input className="registerInput" type="number" value={gradeLevel} onChange={(e) => setGradeLevel(e.target.value)} />
-                </div>
-                <button className="registerButton" type="submit">Register</button>
-            </form>
+          <form onSubmit={handleSubmit}>
+            {/* Container for the first three fields */}
+            <div className="fieldContainer">
+              <div className="registerField">
+                <label className="registerLabel">Name:</label>
+                <input className="registerInput" type="text" value={name} onChange={(e) => setName(e.target.value)} />
+              </div>
+              <div className="registerField">
+                <label className="registerLabel">Username:</label>
+                <input className="registerInput" type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+              </div>
+              <div className="registerField">
+                <label className="registerLabel">Password:</label>
+                <input className="registerInput" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              </div>
+            </div>
+      
+            {/* Container for the last three fields */}
+            <div className="fieldContainer">
+              <div className="registerField">
+                <label className="registerLabel">Email:</label>
+                <input className="registerInput" type="string" value={email} onChange={(e) => setEmail(e.target.value)} />
+              </div>
+              <div className="registerField">
+                <label className="registerLabel">Age:</label>
+                <input className="registerInput" type="number" value={age} onChange={(e) => setAge(e.target.value)} />
+              </div>
+              <div className="registerField">
+                <label className="registerLabel">Grade Level:</label>
+                <input className="registerInput" type="number" value={gradeLevel} onChange={(e) => setGradeLevel(e.target.value)} />
+              </div>
+            </div>
+      
+            <button className="registerButton" type="submit">Register</button>
+          </form>
         </div>
-    );
+      );
 };
 
 export default RegisterComponent;
