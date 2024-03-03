@@ -10,28 +10,27 @@ function Progress(props: ProgressProps) {
   const { incompleteCourses, completedCourses } = props.student;
 
   // Check if both lists are empty
-  const noCoursesAdded = incompleteCourses === null && completedCourses === null;
+  const noCoursesAdded = incompleteCourses.length === 0 && completedCourses.length === 0;
 
   return (
     <div>
       <div className="header1">
         <h1>Progress</h1>
         <div className="student-info">
-          {/* Display message if no courses have been added */}
           {noCoursesAdded ? (
             <p>No courses have been added.</p>
           ) : (
             <>
               <p>Topics To Improve:</p>
               <ul>
-                {incompleteCourses.map((course, index) => (
-                  <li key={index}>{course}</li>
+                {incompleteCourses && incompleteCourses.map((course, index) => (
+                  <li key={index}>{course.name}</li>
                 ))}
               </ul>
               <p>Completed Courses:</p>
               <ul>
-                {completedCourses.map((course, index) => (
-                  <li key={index}>{course}</li>
+                {completedCourses && completedCourses.map((course, index) => (
+                  <li key={index}>{course.name}</li>
                 ))}
               </ul>
             </>
