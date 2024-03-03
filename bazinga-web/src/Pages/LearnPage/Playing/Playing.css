@@ -57,7 +57,7 @@
 }
 
 .readbutton:hover {
-  color: black;
+  background-color: #fd7824;
 }
 
 .correct {
@@ -75,13 +75,12 @@
     font-family: "Bungee", sans-serif;
     text-align: center;
     background: transparent;
-    animation: blink 1s linear infinite;
+    animation: blink 1.5s linear infinite;
     opacity: 1;
 }
 
 .nextbutton:hover {
-  color: black;
-  animation-play-state: paused;
+  background-color: #fd7824;
 
 }
 
@@ -90,6 +89,6 @@
     opacity: 1;
   }
   50% {
-    opacity: 0.2;
+    opacity: 0.5;
   }
 }

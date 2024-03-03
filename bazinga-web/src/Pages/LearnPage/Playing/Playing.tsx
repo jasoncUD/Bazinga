@@ -119,26 +119,21 @@ const Playing: FC<PlayingProps> = (props) => {
         </button>
       ))}
       <button
-        onClick={() => speak(sampleQuestions[questionIndex].question)}
-        className="button12"
-      >
-        Read Question
-      </button>
+  onClick={() => speak(sampleQuestions[questionIndex].question)}
+  className="readbutton"
+>
+  Read Question
+</button>
       {isWrong && !showResults && (
-        <div>
-          Incorrect <button onClick={handleNextQuestion}>Next Question</button>
-        </div>
-      )}
+  <div className="incorrect">
+    incorrect <button className='nextbutton' onClick={handleNextQuestion}>Next</button>{" "}
+  </div>
+)}
       {isCorrect && !showResults && (
-        <div>
-          Correct! <button onClick={handleNextQuestion}>Next Question</button>{" "}
-        </div>
-      )}
-      {showResults && (
-        <div>
-          <button>Results</button>
-        </div>
-      )}
+  <div className="correct">
+    Correct! <button className="nextbutton" onClick={handleNextQuestion}>Next</button>{" "}
+  </div>
+)}
 
     </div>
   );
