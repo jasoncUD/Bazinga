@@ -53,14 +53,14 @@ function App() {
   };
 
   return (
-    <div className="App">
-       <div className="navbar">
-      <button onClick={showHome}>Home</button>
-      <button onClick={showProfile}>Profile</button>
-      <button onClick={isLoggedIn ? handleLogout : showLogin}>
-        {isLoggedIn ? 'Logout' : 'Login'}
-      </button>
-    </div>
+    <div className="App background1">
+      <div className="navbar">
+        <button onClick={showHome}>Home</button>
+        <button onClick={showProfile}>Profile</button>
+        <button onClick={isLoggedIn ? handleLogout : showLogin}>
+          {isLoggedIn ? 'Logout' : 'Login'}
+        </button>
+      </div>
       {isProfile && <ProfilePage />}
       {isHomePage && <HomePage />}
       {isLogin && <LoginPage isLoggedIn={isLoggedIn} handleLogin={handleLogin} />}
