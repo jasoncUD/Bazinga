@@ -22,7 +22,6 @@ const Playing: FC<PlayingProps> = (props) => {
   const [isWrong, setIsWrong] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
 
-
   useEffect(() => {
     // Gather all options and the answer into an array
     const optionsArray = [
@@ -82,8 +81,8 @@ const Playing: FC<PlayingProps> = (props) => {
         ))}
         {/* Button to read out the question */}
         <button onClick={() => speak(sampleQuestion.question)}>Read Question</button>
-        {isWrong && <div>Incorrect</div>}
-        {isCorrect && <div>Correct!</div>}
+        {isWrong && <div>Incorrect <button>Next Question</button></div>}
+        {isCorrect && <div>Correct! <button>Next Question</button></div>}
     </div>
   );
 };
