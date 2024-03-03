@@ -3,5 +3,5 @@ export interface Question {
     option1: string;
     option2: string;
     option3: string;
-    optionCorrect: string;
+    answer: string;
 };
