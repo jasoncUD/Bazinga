@@ -1,38 +1,69 @@
-/* LoginComponent.css and RegisterComponent.css */
-.login-container, .register-container {
-    width: 300px;
-    margin: auto;
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ccc;
+/* Container class */
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 50px auto;
 }
 
-form > div {
-    margin-bottom: 15px;
+/* Form heading */
+.registerHeading {
+  color: #333;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+/* Form field wrapper */
+.registerField {
+  margin-bottom: 15px;
+  width: 100%;
 }
 
-input[type="text"], input[type="password"], input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+/* Labels in the form */
+.registerLabel {
+  display: block;
+  margin-bottom: 5px;
+  color: #666;
 }
 
-button {
-    width: 100%;
+/* Input fields */
+.registerInput {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Submit button */
+.registerButton {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 20px;
+  margin: 10px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.registerButton:hover {
+  background-color: #45a049;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .registerContainer {
+    width: 90%;
+    margin: 20px auto;
     padding: 10px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-}
-button:hover {
-    background-color: #0056b3;
+  }
+
+  .registerInput,
+  .registerButton {
+    padding: 8px;
+  }
 }
