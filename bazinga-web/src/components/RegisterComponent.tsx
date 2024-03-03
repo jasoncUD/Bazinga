@@ -15,12 +15,12 @@ const RegisterComponent: React.FC<RegisterComponentProps> = ({ handleLogin }) =>
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        fetch("http://localhost:8080/login", {
+        fetch("http://localhost:8080/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password, age, gradeLevel }),
+            body: JSON.stringify({ name, username, password, email, age, gradeLevel }),
         }).then((res) => res.json())
         .then((data) => {
         if (data.userId) {

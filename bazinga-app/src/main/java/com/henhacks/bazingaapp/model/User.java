@@ -4,6 +4,7 @@ import org.springframework.data.annotation.*;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.*;
+import com.mongodb.lang.NonNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,21 +20,27 @@ public class User {
     @Id
     private String userId;
 
+    @NonNull
     @JsonProperty("name")
     private String name;
 
+    @NonNull
     @JsonProperty("username")
     private String username;
 
+    @NonNull
     @JsonProperty("password") 
     private String password;
 
+    @NonNull
     @JsonProperty("email")
     private String email;
 
+    @NonNull
     @JsonProperty("gradeLevel") 
     private int gradeLevel;
     
+    @NonNull
     @JsonProperty("age")
     private int age;
 
