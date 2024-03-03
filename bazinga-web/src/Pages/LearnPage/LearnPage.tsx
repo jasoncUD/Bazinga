@@ -7,11 +7,10 @@ interface LearnPageProps {
   setIsBazinga: (isBazinga: boolean) => void;
 }
 
-const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
+const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   const [task, setTask] = useState<string | null>(null);
   const [subject, setSubject] = useState<string | null>(null);
   const [isCategories, setIsCategories] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
 
   const changeTask = (task: string) => {
     setTask(task);
@@ -20,19 +19,16 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
       setSubject(subject);
     };
   };
-  const goToPlaying = () => {
+  const goToCategory = () => {
     if (task && subject) {
-      setIsPlaying(true);
+      setIsCategories(true);
     }
     setIsBazinga(false);
   };
 
-  const selectCategory = (category: string) => {
-  };
-
   return (
     <>
-      {!isPlaying && (
+      {!isCategories && (
         <>
           <div className="button-container1">
             <button
@@ -95,14 +91,14 @@ const LearnPage: FC<LearnPageProps> = ({setIsBazinga}) => {
           </div>
 
           <div className="button-container3">
-            <button className="button1" onClick={goToPlaying}>
+            <button className="button1" onClick={goToCategory}>
               Continue
             </button>
           </div>
         </>
       )}
-      {isPlaying && task !== null && subject !== null && (
-        <Playing task={task} subject={subject} />
+      {isCategories && task !== null && subject !== null && (
+        <Categories task={task} subject={subject} />
       )}
     </>
   );
