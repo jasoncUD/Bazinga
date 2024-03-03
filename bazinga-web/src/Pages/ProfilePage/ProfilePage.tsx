@@ -9,14 +9,15 @@ interface ProfilePageProps {}
 const ProfilePage: FC<ProfilePageProps> = () => {
   const [activeTab, setActiveTab] = useState("account");
   const [student, setStudent] = useState({
+    id: "",
     name: "",
     username: "",
     password: "",
     email: "",
     age: 0,
     gradeLevel: "",
-    completedCourses: [""],
-    incompleteCourses: [""],
+    completedCourses: [],
+    incompleteCourses: [],
   });
 
   useEffect(() => {

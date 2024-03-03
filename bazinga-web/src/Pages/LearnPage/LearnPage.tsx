@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useEffect } from "react";
 import "./LearnPage.css";
 import Categories from "./Categories/Categories";
 import { Category } from "../../interfaces/category";
@@ -12,17 +12,19 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
   const [subject, setSubject] = useState<string | null>(null);
   const [isCategories, setIsCategories] = useState(false);
   const [student, setStudent] = useState({
+    id: "",
     name: "",
     username: "",
     password: "",
     email: "",
     age: 0,
     gradeLevel: "",
-    completedCourses: [""],
-    incompleteCourses: [""],
+    completedCourses: [],
+    incompleteCourses: [],
   });
+
   //make a categoryList array that takes in the category.ts interface
-  const categoryList: Category[] = [
+  const [categoryList, setCategoryList] = useState<Category[]>([
     {
       name: "Shapes",
       correct: 0,
@@ -162,7 +164,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
         },
       ],
     },
-  ];
+  ]);
   const changeTask = (task: string) => {
     setTask(task);
 
@@ -178,6 +180,7 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
         setStudent(userData);
       }
       if (task === "Practice") {
+        const id = student.id;
         const requestBody = {
           subject: subject,
           age: student.age,
@@ -192,12 +195,9 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data.choices[0].message.content);
-            if (data.userId) {
-              alert("You have successfully logged in!");
-            } else {
-              alert(data.message || "Input data is wrong");
-            }
+            
+            saveCategories(data.choices[0].message.content);
+            console.log("You have saved your categories!");
           })
           .catch((error) => {
             console.error("Generation error:", error);
@@ -210,6 +210,43 @@ const LearnPage: FC<LearnPageProps> = ({ setIsBazinga }) => {
     }
     setIsBazinga(false);
   };
+
+  const saveCategories = (data: any) => {
+    const id = localStorage.getItem("id");
+    console.log(id);
+    data = JSON.parse(data);
+    console.log(data);
+
+    const requestBody = {
+      topics: data.syllabus.topics,
+      id: id,
+    };
+    console.log(student.id);
+    console.log(data.topics)
+    fetch("http://localhost:8080/user/incompleteCourses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((res) => res.json())
+      .then((responseData) => {
+        console.log(responseData);
+        if (responseData) {
+          setStudent(JSON.parse(responseData));
+          setCategoryList(student.incompleteCourses);
+        } else {
+          alert(responseData.message || "Input data is wrong");
+        }
+      })
+      .catch((error) => {
+        console.error("Generation error:", error);
+        alert(
+          "An error occurred during Category Generation. Please retry in one minute."
+        );
+      });
+  }
 
   return (
     <>
