@@ -1,18 +1,40 @@
 import React, { FC, useState, useEffect } from "react";
 import "./Lesson.css";
-import { Category } from "../../interfaces/category";
 
 interface LessonProps {
   categoryLesson: string;
   setIsShowCategory: (isShowCategory: boolean) => void;
-  setIsPlaying: (isPlaying: boolean) => void;
+  setIsLesson: (isPlaying: boolean) => void;
 }
 
-const Playing: FC<LessonProps> = (props) => {
+const Lesson: FC<LessonProps> = (props) => {
   const backToRoadMap = () => {
     props.setIsShowCategory(true);
-    props.setIsPlaying(false);
+    props.setIsLesson(false);
   };
+  // fetch("http://localhost:8080/user/incompleteCourses", {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  //   body: JSON.stringify(requestBody),
+  // })
+  //   .then((res) => res.json())
+  //   .then((responseData) => {
+  //     console.log(responseData);
+  //     if (responseData) {
+  //       setStudent(JSON.parse(responseData));
+  //       setCategoryList(student.incompleteCourses);
+  //     } else {
+  //       alert(responseData.message || "Input data is wrong");
+  //     }
+  //   })
+  //   .catch((error) => {
+  //     console.error("Generation error:", error);
+  //     alert(
+  //       "An error occurred during Category Generation. Please retry in one minute."
+  //     );
+  //   });
 
   const data = localStorage.getItem("user");
   let userData; // Declare the userData variable outside of the if statement
@@ -23,11 +45,11 @@ const Playing: FC<LessonProps> = (props) => {
   return (
     <div className="container">
       <h1>Learn {props.categoryLesson}</h1>
-      <h1>Let's Learn For Grade Level: {userData.gradeLevel}</h1>
+      <h1>Grade Level: {userData.gradeLevel}</h1>
       <p>Youtube Link!</p>
       <button onClick={backToRoadMap}>Back</button>
     </div>
   );
 };
 
-export default Playing;
+export default Lesson;

@@ -52,7 +52,7 @@ const LessonCategories: React.FC<LessonCategoriesProps> = (props) => {
         <Lesson
           categoryLesson={categoryLesson}
           setIsShowCategory={setIsShowCategory}
-          setIsPlaying={setIsLesson}
+          setIsLesson={setIsLesson}
         />
       )}
     </div>
