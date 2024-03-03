@@ -7,21 +7,26 @@ interface CategoriesProps {
     categoryList: Category[];
 }
 
+const handleCategoryClick = () => {
+  // This function does nothing
+};
+
 const Categories: React.FC<CategoriesProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   return (
     <div className="categories-container">
       <div className="letslearn">
-  <h1>Let's Learn!</h1>
-</div>
+        <h1>Let's Learn!</h1>
+      </div>
       <div className="category-list">
         {props.categoryList.map((category) => (
-          <div
+          <button
             key={category.name}
             className="category-item"
+            onClick={() => handleCategoryClick()} // Assuming you have a function handleCategoryClick to handle clicks
           >
             {category.name}
-          </div>
+          </button>
         ))}
       </div>
       {isPlaying && (
