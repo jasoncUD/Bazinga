@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import Confetti from 'react-confetti';
+import Confetti from "react-confetti";
 import "./Playing.css";
 import { Question } from "../../../interfaces/question";
 
@@ -45,7 +45,7 @@ const Playing: FC<PlayingProps> = (props) => {
   }
 
   const speak = (text: string) => {
-    if ('speechSynthesis' in window) {
+    if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.rate = 1; // Speed of speech
       utterance.pitch = 1; // Pitch of speech
@@ -65,7 +65,7 @@ const Playing: FC<PlayingProps> = (props) => {
     } else {
       // Incorrect answer
       setShowConfetti(false);
-      setIsWrong(true); 
+      setIsWrong(true);
       setIsCorrect(false);
     }
   };
@@ -77,12 +77,30 @@ const Playing: FC<PlayingProps> = (props) => {
       <h2 className="header2">{sampleQuestion.question}</h2>
       {/* Render option buttons in randomized order */}
       {options.map((option, index) => (
-    <button key={index} onClick={() => handleOptionClick(option)} className="buttons12">{option}</button>
-))}
-      <button onClick={() => speak(sampleQuestion.question)} className="button12">Read Question</button>
-      {isWrong && <div>Incorrect</div>}
-        {isCorrect && <div>Correct!</div>}
-
+        <button
+          key={index}
+          onClick={() => handleOptionClick(option)}
+          className="buttons12"
+        >
+          {option}
+        </button>
+      ))}
+      <button
+        onClick={() => speak(sampleQuestion.question)}
+        className="button12"
+      >
+        Read Question
+      </button>
+      {isWrong && (
+        <div>
+          Incorrect <button>Next Question</button>
+        </div>
+      )}
+      {isCorrect && (
+        <div>
+          Correct! <button>Next Question</button>{" "}
+        </div>
+      )}
     </div>
   );
 };
