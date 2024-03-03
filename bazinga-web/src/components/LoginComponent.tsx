@@ -12,7 +12,7 @@ const LoginComponent: React.FC<LoginComponentProps> = ({ handleLogin }) => {
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
-        fetch("http://localhost:8080/register", {
+        fetch("http://localhost:8080/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

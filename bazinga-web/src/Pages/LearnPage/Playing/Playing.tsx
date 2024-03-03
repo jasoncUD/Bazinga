@@ -4,8 +4,6 @@ import "./Playing.css";
 import { Question } from "../../../interfaces/question";
 
 interface PlayingProps {
-  task: string;
-  subject: string;
 }
 
 const Playing: FC<PlayingProps> = (props) => {
@@ -16,6 +14,7 @@ const Playing: FC<PlayingProps> = (props) => {
       option2: "London",
       option3: "New York",
       answer: "Paris",
+      feedback: "Paris is the capital of France!",
     },
     {
       question: "What is the largest planet in our solar system?",
@@ -23,6 +22,7 @@ const Playing: FC<PlayingProps> = (props) => {
       option2: "Jupiter",
       option3: "Earth",
       answer: "Uranus",
+      feedback: "Jupiter is the largest planet!",
     },
     {
       question: "What is the powerhouse of the cell?",
@@ -30,6 +30,7 @@ const Playing: FC<PlayingProps> = (props) => {
       option2: "Ribosome",
       option3: "Mitochondria",
       answer: "Mitochondria",
+      feedback: "Mitochondria is the powerhouse of the cell!",
     },
     // Add more sample questions here
   ]);
