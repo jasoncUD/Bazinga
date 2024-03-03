@@ -9,7 +9,7 @@ function Settings(props: SettingsProps) {
     "Taylor Swift",
     "Dwight Schrute",
     "Lebron James",
-    "Jack Harlow",
+    "Joe Biden",
     
   ];
   const [voiceActor, setVoiceActor] = useState("Mr. Beast");
