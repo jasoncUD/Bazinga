@@ -53,7 +53,7 @@ function App() {
   };
 
   return (
-    <div className="App background1">
+    <div className="App background">
       <div className="navbar">
         <button onClick={showHome}>Home</button>
         <button onClick={showProfile}>Profile</button>

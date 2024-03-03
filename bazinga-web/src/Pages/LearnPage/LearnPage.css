@@ -12,6 +12,7 @@
 
 .button-container1 {
     margin-top: 20px; /* Adjust as needed */
+    animation-play-state: paused;
   }
 
   .button1 {
@@ -22,4 +23,9 @@
     border: none;
     border-radius: 50%; 
     cursor: pointer;
+    animation-play-state: paused;
+  }
+
+  .button1:hover {
+    background-color: #45a049;
   }
